@@ -1,0 +1,77 @@
+{
+  "id": "landingPage",
+  "label": "Landing Page",
+  "repeatable": true,
+  "status": true,
+  "format": "page",
+  "json": {
+    "Core": {
+      "title": {
+        "type": "Text",
+        "config": { "label": "Title", "placeholder": "", "useAsTitle": true }
+      },
+      "uid": { "type": "UID", "config": { "label": "Slug", "placeholder": "" } }
+    },
+    "Meta": {
+      "summary": {
+        "type": "Text",
+        "config": { "label": "Summary", "placeholder": "" }
+      },
+      "primaryImage": {
+        "type": "Image",
+        "config": {
+          "label": "Primary Image",
+          "constraint": { "width": 1200, "height": 630 }
+        }
+      }
+    },
+    "Hero": {
+      "heroImage": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": { "width": 4000, "height": 2850 },
+          "thumbnails": [
+            { "name": "wide", "width": 4000, "height": 2000 },
+            { "name": "square", "width": 4000, "height": 4000 },
+            { "name": "portrait", "width": 4000, "height": 6000 }
+          ]
+        }
+      },
+      "heroTagline": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Tagline",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "heroTextColor": {
+        "type": "Select",
+        "config": {
+          "label": "Text Colour",
+          "placeholder": "",
+          "options": ["Light", "Dark"],
+          "default_value": "Light"
+        }
+      }
+    },
+    "Main": {
+      "slices2": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "text_block": { "type": "SharedSlice" },
+            "wide_image_block": { "type": "SharedSlice" },
+            "quotes_block": { "type": "SharedSlice" },
+            "emphasis_block": { "type": "SharedSlice" },
+            "image_carousel_block": { "type": "SharedSlice" },
+            "embed_block": { "type": "SharedSlice" }
+          }
+        }
+      }
+    }
+  }
+}

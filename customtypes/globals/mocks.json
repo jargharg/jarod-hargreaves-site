@@ -1,0 +1,123 @@
+[
+  {
+    "menu": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "link",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "DocumentLink",
+                  "id": "mock_document_id"
+                }
+              }
+            ],
+            [
+              "label",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "aid",
+                "type": "Text"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "footerPolicies": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "link",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "DocumentLink",
+                  "id": "mock_document_id"
+                }
+              }
+            ],
+            [
+              "label",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "farmer",
+                "type": "Text"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "socialLinks": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "platform",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "Facebook",
+                "type": "Select"
+              }
+            ],
+            [
+              "link",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "ExternalLink",
+                  "url": "https://slicemachine.dev"
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "contactAddress": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "Incididunt et laborum Lorem eu ad."
+          }
+        }
+      ]
+    },
+    "contactLocation": {
+      "__TYPE__": "GeoPointContent",
+      "position": {
+        "lat": 48.8583736,
+        "lng": 2.2922926
+      }
+    },
+    "contactMapLink": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "ExternalLink",
+        "url": "https://slicemachine.dev"
+      }
+    },
+    "contactEmailAddress": {
+      "__TYPE__": "FieldContent",
+      "value": "teacher",
+      "type": "Text"
+    },
+    "contactNumber": {
+      "__TYPE__": "FieldContent",
+      "value": "found",
+      "type": "Text"
+    }
+  }
+]

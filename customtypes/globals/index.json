@@ -1,0 +1,120 @@
+{
+  "id": "globals",
+  "label": "Globals",
+  "repeatable": false,
+  "status": true,
+  "format": "custom",
+  "json": {
+    "Navigations": {
+      "menu": {
+        "config": {
+          "label": "Menu",
+          "fields": {
+            "link": {
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "select": "document"
+              },
+              "type": "Link"
+            },
+            "label": {
+              "config": { "label": "Label", "placeholder": "" },
+              "type": "Text"
+            }
+          }
+        },
+        "type": "Group"
+      },
+      "footerPolicies": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Policies",
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "select": "document",
+                "customtypes": ["legal"]
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": { "label": "Label", "placeholder": "" }
+            }
+          }
+        }
+      }
+    },
+    "Social": {
+      "socialLinks": {
+        "config": {
+          "label": "Social Links",
+          "fields": {
+            "platform": {
+              "type": "Select",
+              "config": {
+                "label": "Platform",
+                "placeholder": "",
+                "options": ["Instagram", "Twitter", "Facebook", "Linkedin"],
+                "default_value": "Instagram"
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": { "label": "Link", "placeholder": "", "select": "web" }
+            }
+          }
+        },
+        "type": "Group"
+      }
+    },
+    "Contact": {
+      "contactAddress": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,list-item,o-list-item"
+        }
+      },
+      "contactLocation": {
+        "type": "GeoPoint",
+        "config": { "label": "Location" }
+      },
+      "contactMapLink": {
+        "type": "Link",
+        "config": { "label": "Map Link", "placeholder": "", "select": "web" }
+      },
+      "contactEmailAddress": {
+        "type": "Text",
+        "config": { "label": "Email Address", "placeholder": "" }
+      },
+      "contactNumber": {
+        "type": "Text",
+        "config": { "label": "Telephone Number", "placeholder": "" }
+      }
+    },
+    "Footer Slides": {
+      "slides": {
+        "type": "Group",
+        "config": {
+          "label": "Slides",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": { "width": 5000, "height": 4000 },
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+name = "phil-hargreaves-photography-site-dev"
+main = "./.output/server/index.mjs"
+workers_dev = true
+compatibility_date = "2023-04-04"
+account_id = "880727da76bee1a445d7d9aba10cdb2a"
+
+[site]
+bucket = ".output/public"
+
+[env.staging]
+name = "phil-hargreaves-photography-site-staging"
+
+[env.production]
+name = "phil-hargreaves-photography-site"
+workers_dev = false
