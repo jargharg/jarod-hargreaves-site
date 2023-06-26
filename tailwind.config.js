@@ -26,6 +26,7 @@ module.exports = {
 
     extend: {
       fontFamily: {
+        mono: ['mono45-headline', 'monospace'],
         display: ['scandia-line-web', 'serif'],
         body: ['scandia-web', 'sans-serif'],
       },
