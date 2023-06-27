@@ -27,7 +27,7 @@
     </div>
 
     <div class="flex gap-px">
-      <VolumeControl />
+      <VolumeControl class="hidden md:block" />
       <BpmControl />
     </div>
 

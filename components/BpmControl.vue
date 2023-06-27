@@ -3,7 +3,10 @@
     <label
       for="bpm"
       class="pointer-events-none absolute inset-0 flex items-center justify-center text-brand-outline uppercase font-mono tracking-widest text-sm mix-blend-difference"
-    >Speed</label>
+    >
+      Speed ({{ bpm }} BPM)
+    </label>
+
     <input
       id="bpm"
       type="range"
