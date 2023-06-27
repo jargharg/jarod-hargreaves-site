@@ -57,7 +57,11 @@ export default {
     const toneStore = useToneStore()
 
     const toggleOnPressSpace = (event) => {
-      if (event.target.tagName.toUpperCase() === 'BUTTON') {
+      const isTransportButtonFocused = Array.from(
+        event.target.classList,
+      ).includes('transport-button')
+
+      if (isTransportButtonFocused) {
         return
       }
 

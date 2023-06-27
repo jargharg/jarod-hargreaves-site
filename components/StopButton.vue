@@ -1,6 +1,6 @@
 <template>
   <button
-    class="h-full w-full p-2"
+    class="h-full w-full p-2 transport-button"
     :class="{ 'bg-brand-red': isPlaying, 'bg-brand-green': !isPlaying }"
     @click="onClickStop"
   >
