@@ -7,6 +7,7 @@ export const useKickStore = defineStore('kick', {
   state: () => {
     return {
       synth: null,
+      volume: -6,
     }
   },
 
@@ -15,13 +16,13 @@ export const useKickStore = defineStore('kick', {
       const toneStore = useToneStore()
 
       const filter = new Tone.Filter({
-        // frequency: 100,
-        // type: 'lowpass',
-        // rolloff: -96,
+        frequency: 0,
+        type: 'highpass',
+        rolloff: -96,
       })
 
       this.synth = new Tone.MembraneSynth({
-        volume: -20,
+        volume: this.volume,
         pitchDecay: 0.02,
         octaves: 10,
         oscillator: {
@@ -30,17 +31,25 @@ export const useKickStore = defineStore('kick', {
         envelope: {
           attack: 0.001,
           decay: 0.4,
-          sustain: 0.3,
+          sustain: 0.2,
           release: 0.5,
           attackCurve: 'exponential',
         },
-      }).toDestination()
+      })
 
       toRaw(this.synth).chain(filter, toRaw(toneStore.masterOut))
     },
 
     play (t) {
       toRaw(this.synth).triggerAttackRelease('a0', '16n', t)
+    },
+
+    setVolume (volume) {
+      this.volume = volume
+
+      if (this.synth) {
+        toRaw(this.synth).set({ volume })
+      }
     },
   },
 })

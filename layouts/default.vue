@@ -1,7 +1,7 @@
 <template>
   <div>
     <main
-      class="h-full min-h-screen bg-brand-background text-brand-outline text-base-mobile lg:text-base font-light"
+      class="h-full min-h-screen bg-brand-background text-brand-outline text-base-mobile lg:text-base font-light font-body"
     >
       <NuxtPage :transition="defaultTransition" />
     </main>
@@ -23,10 +23,6 @@ export default {
 
     const isCookiePolicyRoute = () => route.fullPath.includes('cookie-policy')
     const isCookieButtonHidden = computed(() => !isCookiePolicyRoute())
-
-    onMounted(async () => {
-      await nextTick()
-    })
 
     useHead(() => ({
       htmlAttrs: { lang: 'en' },

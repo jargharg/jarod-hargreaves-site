@@ -1,5 +1,7 @@
 <template>
-  <div class="noise-overlay" />
+  <client-only>
+    <div class="noise-overlay" />
+  </client-only>
 </template>
 
 <style scoped lang="scss">
@@ -13,13 +15,8 @@
   top: 0;
   user-select: none;
 
-  width: 100vw;
-  height: 100vw;
-
-  @media screen and (orientation: portrait) {
-    width: 100vh;
-    height: 100vh;
-  }
+  width: max(100vw, 100vh);
+  height: max(100vw, 100vh);
 }
 
 @keyframes rotate {
@@ -39,5 +36,4 @@
     transform: rotate(0.75turn);
   }
 }
-
 </style>

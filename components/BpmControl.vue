@@ -1,20 +1,20 @@
 <template>
   <div class="relative w-full h-full">
     <label
-      for="volume"
+      for="bpm"
       class="pointer-events-none absolute inset-0 flex items-center justify-center text-brand-outline uppercase font-mono tracking-widest text-sm mix-blend-difference"
-    >Volume</label>
+    >Speed</label>
     <input
-      id="volume"
+      id="bpm"
       type="range"
-      name="volume"
-      min="-32"
-      max="0"
-      step="0.2"
+      name="bpm"
+      min="60"
+      max="200"
+      step="1"
       orient="vertical"
-      class="volume-control"
-      :value="volume"
-      @input="onInputVolume"
+      class="bpm-control"
+      :value="bpm"
+      @input="onInputBpm"
     >
   </div>
 </template>
@@ -25,19 +25,19 @@ import { useToneStore } from '~/stores/tone'
 export default {
   setup () {
     const toneStore = useToneStore()
-    const volume = toRef(toneStore, 'volume')
+    const bpm = toRef(toneStore, 'bpm')
 
-    const onInputVolume = (event) => {
-      toneStore.setVolume(event.target.value)
+    const onInputBpm = (event) => {
+      toneStore.setBpm(event.target.value)
     }
 
-    return { onInputVolume, volume }
+    return { onInputBpm, bpm }
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.volume-control {
+.bpm-control {
   @apply appearance-none w-full h-full bg-transparent overflow-hidden outline-none cursor-pointer border-r border-brand-outline;
 
   &::-webkit-slider-thumb {

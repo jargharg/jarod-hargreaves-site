@@ -15,18 +15,14 @@ export function getPosition () {
 export const useToneStore = defineStore('tone', {
   state: () => {
     return {
+      bpm: 145,
       isPlaying: false,
       isInitialised: false,
       position: { sequence: -1 },
       masterOut: null,
-      volume: { value: 1 },
+      volume: -6,
+      volumeNode: null,
     }
-  },
-
-  getters: {
-    bpm () {
-      return Tone.Transport.bpm.value
-    },
   },
 
   actions: {
@@ -35,31 +31,42 @@ export const useToneStore = defineStore('tone', {
     },
 
     setBpm (targetBpm) {
+      this.bpm = targetBpm
+
+      if (!this.isInitialised) {
+        return
+      }
+
       Tone.Transport.bpm.value = targetBpm
     },
 
     setupTone () {
+      Tone.Transport.bpm.value = 145
+
       this.scheduleRepeat(() => {
         this.position = getPosition()
       })
 
-      this.volume = new Tone.Volume(0)
-      toRaw(this.volume).debug = true
-      console.log(toRaw(this.volume))
+      this.volumeNode = new Tone.Volume(this.volume).toDestination()
+      toRaw(this.volumeNode).debug = true
 
-      this.reverb = new Tone.Reverb({ wet: 0.3, decay: 0.4, preDelay: 0.2 })
-      this.masterOut = toRaw(this.reverb).chain(toRaw(this.volume)).toDestination()
+      const reverb = new Tone.Reverb({ wet: 0.3, decay: 0.4, preDelay: 0 })
+      const comp = new Tone.Compressor(-96, 20)
+      const gain = new Tone.Gain(20)
+      this.masterOut = reverb
+        .connect(comp)
+        .connect(gain)
+        .connect(toRaw(this.volumeNode))
     },
 
-    setVolume (targetVolume) {
-      if (!this.volume) {
+    setVolume (volume) {
+      this.volume = volume
+
+      if (!this.volumeNode) {
         return
       }
-      console.log('setting', targetVolume)
-      console.log(this.volume)
 
-      this.volume.volume.value = targetVolume
-      console.log(toRaw(this.volume))
+      toRaw(this.volumeNode).volume.value = volume
     },
 
     async toggleAudio () {
@@ -82,5 +89,6 @@ export const useToneStore = defineStore('tone', {
       Tone.Transport.stop()
       this.isPlaying = false
     },
+
   },
 })

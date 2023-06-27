@@ -4,7 +4,7 @@
       <PlayButton />
     </div>
 
-    <div />
+    <KickControl />
 
     <div class="control">
       <SequenceIndicator />
@@ -13,35 +13,23 @@
     <div />
 
     <div class="synth__center">
-      <NameSequencer class="col-span-2" />
+      <NameSequencer class="row-span-2 md:row-span-1 md:col-span-2" />
 
-      <div
-        class="flex flex-col items-center justify-center border-t border-r border-brand-outline"
-      >
-        <h2 class="uppercase tracking-widest">
-          Projects
-        </h2>
-        <span class="text-xs"> (todo) </span>
-      </div>
+      <BioBlock class="md:border-r" />
 
-      <div
-        class="flex flex-col items-center justify-center border-t border-brand-outline"
-      >
-        <h2 class="uppercase tracking-widest">
-          Bio
-        </h2>
-        <span class="text-xs"> (todo) </span>
-      </div>
+      <ProjectsBlock />
     </div>
 
     <div />
-    <!-- <VolumeControl /> -->
 
     <div class="control">
       <SequenceIndicator />
     </div>
 
-    <div />
+    <div class="flex gap-px">
+      <VolumeControl />
+      <BpmControl />
+    </div>
 
     <div class="control">
       <StopButton />
@@ -83,11 +71,11 @@ export default {
 
 <style lang="scss" scoped>
 .synth {
-  @apply h-screen w-full grid;
+  @apply h-screen w-full grid overflow-hidden;
   --sequencer-border-width: theme("spacing.10");
 
   @screen md {
-    --sequencer-border-width: theme("spacing.20");
+    --sequencer-border-width: theme("spacing.16");
   }
 
   grid-template:
@@ -97,7 +85,7 @@ export default {
     / var(--sequencer-border-width) auto var(--sequencer-border-width);
 
   &__center {
-    @apply w-full h-full border border-brand-outline relative grid grid-cols-2 auto-rows-fr;
+    @apply w-full min-h-full border border-brand-outline relative grid md:grid-cols-2 auto-rows-fr overflow-scroll;
     grid-area: center;
   }
 }

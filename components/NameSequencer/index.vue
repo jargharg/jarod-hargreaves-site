@@ -94,8 +94,6 @@ export default {
     watch(
       () => toneStore.isInitialised,
       () => {
-        toneStore.setBpm(145)
-
         const kick = useKickStore()
         kick.create()
 
@@ -129,6 +127,7 @@ export default {
 
   &__row {
     @apply flex-1 grid gap-px w-full grid-cols-4 md:grid-cols-8;
+
     @screen lg {
       grid-template-columns: repeat(16, 1fr);
     }
@@ -139,8 +138,12 @@ export default {
     @apply relative flex flex-col items-center justify-center w-full h-full;
     @apply font-mono text-brand-outline leading-none;
     @apply outline-none focus:outline-none select-none;
-    @apply bg-opacity-90 transition-colors duration-75;
-    font-size: max(40px, 4.5vw);
+    @apply transition-colors duration-75;
+    font-size: max(theme("fontSize.xl"), 7vw);
+
+    &:hover::after {
+      @apply opacity-50;
+    }
 
     &::before,
     &::after {
