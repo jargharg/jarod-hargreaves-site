@@ -12,8 +12,26 @@
 
     <div />
 
-    <div class="synth__sequencer">
-      <NameSequencer class="h-1/2 w-full" />
+    <div class="synth__center">
+      <NameSequencer class="col-span-2" />
+
+      <div
+        class="flex flex-col items-center justify-center border-t border-r border-brand-outline"
+      >
+        <h2 class="uppercase tracking-widest">
+          Projects
+        </h2>
+        <span class="text-xs"> (todo) </span>
+      </div>
+
+      <div
+        class="flex flex-col items-center justify-center border-t border-brand-outline"
+      >
+        <h2 class="uppercase tracking-widest">
+          Bio
+        </h2>
+        <span class="text-xs"> (todo) </span>
+      </div>
     </div>
 
     <div />
@@ -70,12 +88,13 @@ export default {
 
   grid-template:
     ". . ." var(--sequencer-border-width)
-    ". sequencer ." auto
+    ". center ." auto
     ". . ." var(--sequencer-border-width)
     / var(--sequencer-border-width) auto var(--sequencer-border-width);
 
-  &__sequencer {
-    @apply w-full h-full border border-brand-outline relative;
+  &__center {
+    @apply w-full h-full border border-brand-outline relative grid grid-cols-2 auto-rows-fr;
+    grid-area: center;
   }
 }
 
