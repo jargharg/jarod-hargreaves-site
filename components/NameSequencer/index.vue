@@ -14,8 +14,8 @@
             class="sequencer__cell"
             :class="{
               'sequencer__cell--active': cell.active,
-              'sequencer__cell--playing': cellIndex === sequencePosition,
               'sequencer__cell--key': rowKey === 'kick',
+              'sequencer__cell--playing': cellIndex === sequencePosition,
             }"
             @mouseenter="onMouseOverCell(rowKey, cellIndex)"
             @mousedown="cell.active = !cell.active"
@@ -94,26 +94,22 @@ export default {
     watch(
       () => toneStore.isInitialised,
       () => {
-        try {
-          toneStore.setBpm(145)
+        toneStore.setBpm(145)
 
-          const kick = useKickStore()
-          kick.create()
+        const kick = useKickStore()
+        kick.create()
 
-          const snare = useSnareStore()
-          snare.create()
+        const snare = useSnareStore()
+        snare.create()
 
-          toneStore.scheduleRepeat((t) => {
-            if (rows.kick[sequencePosition.value].active) {
-              kick.play(t)
-            }
-            if (rows.snare[sequencePosition.value].active) {
-              snare.play(t)
-            }
-          })
-        } catch (e) {
-          console.error(e)
-        }
+        toneStore.scheduleRepeat((t) => {
+          if (rows.kick[sequencePosition.value].active) {
+            kick.play(t)
+          }
+          if (rows.snare[sequencePosition.value].active) {
+            snare.play(t)
+          }
+        })
       },
       { once: true },
     )
@@ -125,7 +121,7 @@ export default {
 
 <style lang="scss" scoped>
 .sequencer {
-  @apply h-full w-full flex flex-col items-center justify-center;
+  @apply flex flex-col items-center justify-center;
 
   &__inner {
     @apply relative w-full h-full flex flex-col gap-px;
@@ -140,33 +136,48 @@ export default {
 
   &__cell {
     $cell: &;
-    @apply font-mono text-brand-white leading-none py-5;
-    @apply flex flex-col items-center justify-center w-full h-full;
+    @apply relative flex flex-col items-center justify-center w-full h-full;
+    @apply font-mono text-brand-outline leading-none;
     @apply outline-none focus:outline-none select-none;
     @apply bg-opacity-90 transition-colors duration-75;
-    font-size: max(40px, 9.1vw);
+    font-size: max(40px, 4.5vw);
 
-    &--playing {
-      @apply bg-amber-500 bg-opacity-100;
+    &::before,
+    &::after {
+      content: "";
+      @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10;
+    }
 
-      &#{$cell}--active {
-        @apply bg-amber-300;
-      }
+    &::after {
+      @apply mix-blend-color-dodge;
+      background: radial-gradient(circle, #aaa 40%, transparent 200%);
+    }
+
+    &::before {
+      box-shadow: 0 0 10px 5px #fff3;
     }
 
     &--active {
-      @apply bg-red-500;
+      @apply bg-brand-green text-brand-background;
     }
 
     &--key {
-      @apply bg-blue-400 bg-opacity-10;
+      &#{$cell}--active {
+        @apply bg-brand-blue text-brand-background;
+      }
+    }
 
-      &#{$cell}--playing {
-        @apply bg-amber-500 bg-opacity-100;
+    &--playing {
+      &::after,
+      &::before {
+        @apply opacity-10 duration-0;
       }
 
       &#{$cell}--active {
-        @apply bg-opacity-100;
+        &::after,
+        &::before {
+          @apply opacity-100 duration-0;
+        }
       }
     }
   }

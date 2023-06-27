@@ -15,7 +15,9 @@ export const useKickStore = defineStore('kick', {
       const toneStore = useToneStore()
 
       const filter = new Tone.Filter({
-        frequency: 10000,
+        // frequency: 100,
+        // type: 'lowpass',
+        // rolloff: -96,
       })
 
       this.synth = new Tone.MembraneSynth({
@@ -34,7 +36,7 @@ export const useKickStore = defineStore('kick', {
         },
       }).toDestination()
 
-      toRaw(this.synth).connect(toRaw(toneStore.masterOut))
+      toRaw(this.synth).chain(filter, toRaw(toneStore.masterOut))
     },
 
     play (t) {

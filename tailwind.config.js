@@ -37,8 +37,12 @@ module.exports = {
       },
 
       colors: {
-        'brand-white': '#eee',
-        'brand-black': '#111',
+        'brand-outline': '#e0dfd9',
+        'brand-background': '#242021',
+        'brand-green': '#84c873',
+        'brand-red': '#d94841',
+        'brand-blue': '#99d3df',
+        'brand-yellow': '#e6eb72',
       },
     },
   },

@@ -1,10 +1,12 @@
 <template>
   <div>
     <main
-      class="h-full min-h-screen bg-brand-black text-brand-white text-base-mobile lg:text-base font-light"
+      class="h-full min-h-screen bg-brand-background text-brand-outline text-base-mobile lg:text-base font-light"
     >
       <NuxtPage :transition="defaultTransition" />
     </main>
+
+    <NoiseOverlay />
   </div>
 </template>
 

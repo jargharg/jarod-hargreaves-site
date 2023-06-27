@@ -52,7 +52,7 @@ export default {
 
   @screen md {
     &:hover {
-      @apply bg-brand-white text-brand-black;
+      @apply bg-brand-outline text-brand-background;
 
       #{$root}__letter {
         @apply opacity-0;

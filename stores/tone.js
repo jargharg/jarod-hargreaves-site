@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 
 import * as Tone from 'tone'
 
+export const sequenceLength = 16
+
 export function getPosition () {
   const [bar, beat, sixteenths] = Tone.Transport.position.split(':')
   const splitSixteenths = +sixteenths.split('.')[0]
@@ -15,8 +17,9 @@ export const useToneStore = defineStore('tone', {
     return {
       isPlaying: false,
       isInitialised: false,
-      position: 0,
-      masterOut: {},
+      position: { sequence: -1 },
+      masterOut: null,
+      volume: { value: 1 },
     }
   },
 
@@ -40,11 +43,23 @@ export const useToneStore = defineStore('tone', {
         this.position = getPosition()
       })
 
-      this.masterOut = new Tone.Volume(0).toDestination()
+      this.volume = new Tone.Volume(0)
+      toRaw(this.volume).debug = true
+      console.log(toRaw(this.volume))
+
+      this.reverb = new Tone.Reverb({ wet: 0.3, decay: 0.4, preDelay: 0.2 })
+      this.masterOut = toRaw(this.reverb).chain(toRaw(this.volume)).toDestination()
     },
 
     setVolume (targetVolume) {
-      this.masterOut.value = targetVolume
+      if (!this.volume) {
+        return
+      }
+      console.log('setting', targetVolume)
+      console.log(this.volume)
+
+      this.volume.volume.value = targetVolume
+      console.log(toRaw(this.volume))
     },
 
     async toggleAudio () {
@@ -61,6 +76,11 @@ export const useToneStore = defineStore('tone', {
         Tone.Transport.pause()
         this.isPlaying = false
       }
+    },
+
+    stopAudio () {
+      Tone.Transport.stop()
+      this.isPlaying = false
     },
   },
 })
