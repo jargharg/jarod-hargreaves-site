@@ -1,9 +1,5 @@
 <template>
-  <div class="projects">
-    <h2 class="projects__heading">
-      Projects
-    </h2>
-
+  <ContentBlock heading="Projects">
     <div class="projects__links">
       <a
         v-for="({ link, label }, index) in links"
@@ -15,7 +11,7 @@
         {{ label }}
       </a>
     </div>
-  </div>
+  </ContentBlock>
 </template>
 
 <script>
@@ -51,19 +47,13 @@ export default {
 
 <style lang="scss" scoped>
 .projects {
-  @apply flex flex-col border-t border-brand-background bg-brand-green text-brand-background;
-
-  &__heading {
-    @apply tracking-widest font-mono text-xl text-center p-2 border-b border-brand-background bg-brand-outline;
-  }
-
   &__links {
     @apply h-full w-full flex flex-col items-stretch;
   }
 
   &__link {
     @apply relative flex-1 flex items-center justify-center p-4 font-mono tracking-wider;
-    @apply border-b last-of-type:border-0 border-brand-background;
+    @apply border-b last-of-type:border-0 border-brand-outline;
     @apply hover:after:opacity-50;
 
     &::after {

@@ -27,7 +27,6 @@ module.exports = {
     extend: {
       fontFamily: {
         mono: ['mono45-headline', 'monospace'],
-        display: ['scandia-line-web', 'serif'],
         body: ['scandia-web', 'sans-serif'],
       },
 
@@ -37,7 +36,8 @@ module.exports = {
       },
 
       colors: {
-        'brand-outline': '#e0dfd9',
+        'brand-outline': '#848380',
+        'brand-text': '#e0dfd9',
         'brand-background': '#242021',
         'brand-green': '#84c873',
         'brand-red': '#d94841',

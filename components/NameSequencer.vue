@@ -14,11 +14,11 @@
             class="sequencer__cell"
             :class="{
               'sequencer__cell--active': cell.active,
-              'sequencer__cell--key': rowKey === 'kick',
+              'sequencer__cell--key': rowKey === 'snare',
               'sequencer__cell--playing': cellIndex === sequencePosition,
             }"
             @mouseenter="onMouseOverCell(rowKey, cellIndex)"
-            @mousedown="cell.active = !cell.active"
+            @mousedown="onMouseDownCell(rowKey, cellIndex)"
           >
             {{ cell.label }}
           </button>
@@ -36,32 +36,28 @@ import { useSnareStore } from '@/stores/snare'
 export default {
   setup () {
     const toneStore = useToneStore()
+    const kick = useKickStore()
+    const snare = useSnareStore()
 
-    const createRows = () => {
-      const createCells = (letters) => {
-        return letters.map((letter) => {
-          return {
-            label: letter,
-            active: false,
-          }
-        })
-      }
-
-      const rows = reactive({
-        snare: createCells('Jarod.Hargreaves'.split('')),
-        kick: createCells('Creative.Web.Dev'.split('')),
+    const createCells = (letters) => {
+      return letters.map((letter) => {
+        return {
+          label: letter,
+          active: false,
+        }
       })
-
-      const kick = [1, 3, 7, 9, 11, 15]
-      kick.forEach(index => (rows.kick[index - 1].active = true))
-
-      const snare = [5, 13]
-      snare.forEach(index => (rows.snare[index - 1].active = true))
-
-      return rows
     }
 
-    const rows = createRows()
+    const setActiveCellsFromStore = (store, row) => {
+      store.pattern.forEach(
+        (isActive, index) => (row[index].active = isActive),
+      )
+    }
+
+    const rows = reactive({
+      snare: createCells('Jarod.Hargreaves'.split('')),
+      kick: createCells('Creative.Web.Dev'.split('')),
+    })
 
     const sequencePosition = computed(() => toneStore.position?.sequence)
 
@@ -87,32 +83,42 @@ export default {
 
     const onMouseOverCell = (rowKey, cellIndex) => {
       if (isMouseDown) {
-        rows[rowKey][cellIndex].active = !rows[rowKey][cellIndex].active
+        const store = rowKey === 'kick' ? kick : snare
+        store.togglePatternStep(cellIndex)
       }
+    }
+
+    const onMouseDownCell = (rowKey, cellIndex) => {
+      const store = rowKey === 'kick' ? kick : snare
+      store.togglePatternStep(cellIndex)
     }
 
     watch(
       () => toneStore.isInitialised,
       () => {
-        const kick = useKickStore()
         kick.create()
-
-        const snare = useSnareStore()
         snare.create()
-
-        toneStore.scheduleRepeat((t) => {
-          if (rows.kick[sequencePosition.value].active) {
-            kick.play(t)
-          }
-          if (rows.snare[sequencePosition.value].active) {
-            snare.play(t)
-          }
-        })
       },
       { once: true },
     )
 
-    return { onMouseOverCell, rows, sequencePosition }
+    watch(
+      () => kick.pattern,
+      () => {
+        setActiveCellsFromStore(kick, rows.kick)
+      },
+      { immediate: true },
+    )
+
+    watch(
+      () => snare.pattern,
+      () => {
+        setActiveCellsFromStore(snare, rows.snare)
+      },
+      { immediate: true },
+    )
+
+    return { onMouseDownCell, onMouseOverCell, rows, sequencePosition }
   },
 }
 </script>
@@ -136,9 +142,11 @@ export default {
   &__cell {
     $cell: &;
     @apply relative flex flex-col items-center justify-center w-full h-full;
-    @apply font-mono text-brand-outline leading-none;
-    @apply outline-none focus:outline-none select-none;
-    @apply transition-colors duration-75;
+    @apply font-mono font-bold text-transparent leading-none text-brand-blue text-opacity-75;
+    @apply outline-none select-none;
+    @apply transition-colors duration-300;
+
+    -webkit-text-stroke: 1px theme("colors.brand-text");
     font-size: max(theme("fontSize.xl"), 7vw);
 
     &:hover::after {
@@ -153,7 +161,7 @@ export default {
 
     &::after {
       @apply mix-blend-color-dodge;
-      background: radial-gradient(circle, #aaa 40%, transparent 200%);
+      background: radial-gradient(circle, #aaa 20%, transparent 200%);
     }
 
     &::before {
@@ -161,26 +169,30 @@ export default {
     }
 
     &--active {
-      @apply bg-brand-green text-brand-background;
+      @apply text-brand-text text-opacity-80;
+      @apply bg-brand-blue bg-opacity-50;
+      @apply after:opacity-10;
+      @apply outline-1 -outline-offset-4;
+      outline-color: theme("colors.brand-text" / 0.75);
     }
 
     &--key {
+      @apply text-brand-green text-opacity-80;
+
       &#{$cell}--active {
-        @apply bg-brand-blue text-brand-background;
+        @apply bg-brand-green bg-opacity-50;
       }
     }
 
     &--playing {
-      &::after,
-      &::before {
-        @apply opacity-10 duration-0;
-      }
+      @apply duration-0;
+      @apply after:opacity-10 after:duration-0;
+      @apply before:opacity-10 before:duration-0;
 
       &#{$cell}--active {
-        &::after,
-        &::before {
-          @apply opacity-100 duration-0;
-        }
+        @apply text-brand-background duration-0;
+        @apply after:opacity-100 after:duration-0;
+        @apply before:opacity-100 before:duration-0;
       }
     }
   }

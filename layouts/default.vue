@@ -1,7 +1,7 @@
 <template>
   <div>
     <main
-      class="h-full min-h-screen bg-brand-background text-brand-outline text-base-mobile lg:text-base font-light font-body"
+      class="h-full min-h-screen bg-brand-background text-brand-text text-base-mobile lg:text-base font-light font-body"
     >
       <NuxtPage :transition="defaultTransition" />
     </main>

@@ -2,16 +2,19 @@ import { defineStore } from 'pinia'
 
 import * as Tone from 'tone'
 import { useToneStore } from './tone'
+import useCommonSynthActions, { mapPatternToBooleans } from '~/helpers/commonSynthActions'
 
 export const useKickStore = defineStore('kick', {
   state: () => {
     return {
+      pattern: mapPatternToBooleans('x.x...x.x.x...x.'),
       synth: null,
-      volume: -6,
     }
   },
 
   actions: {
+    ...useCommonSynthActions(),
+
     create () {
       const toneStore = useToneStore()
 
@@ -22,9 +25,9 @@ export const useKickStore = defineStore('kick', {
       })
 
       this.synth = new Tone.MembraneSynth({
-        volume: this.volume,
+        volume: -10,
         pitchDecay: 0.02,
-        octaves: 10,
+        octaves: 15,
         oscillator: {
           type: 'sawtooth',
         },
@@ -38,18 +41,16 @@ export const useKickStore = defineStore('kick', {
       })
 
       toRaw(this.synth).chain(filter, toRaw(toneStore.masterOut))
+
+      toneStore.scheduleRepeat((t) => {
+        if (this.pattern[toneStore.position.sequence]) {
+          this.play(t)
+        }
+      })
     },
 
-    play (t) {
+    play (t, isSecondHalf) {
       toRaw(this.synth).triggerAttackRelease('a0', '16n', t)
-    },
-
-    setVolume (volume) {
-      this.volume = volume
-
-      if (this.synth) {
-        toRaw(this.synth).set({ volume })
-      }
     },
   },
 })

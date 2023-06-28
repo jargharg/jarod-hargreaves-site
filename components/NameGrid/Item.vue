@@ -37,7 +37,7 @@ export default {
   }
 
   &__letter {
-    @apply uppercase font-display;
+    @apply uppercase font-mono;
     font-size: 13.5vw;
   }
 

@@ -1,38 +1,46 @@
 <template>
-  <article class="synth">
-    <div class="control">
-      <PlayButton />
+  <article>
+    <div class="controls">
+      <div class="controls__control">
+        <PlayButton />
+      </div>
+
+      <div class="flex gap-px bg-brand-background">
+        <KickControl class="hidden md:block" />
+        <FilterControl />
+      </div>
+
+      <div class="controls__control">
+        <SequenceIndicator store="snare" color="green" />
+      </div>
+
+      <div />
+
+      <div class="controls__center" />
+
+      <div />
+
+      <div class="controls__control">
+        <SequenceIndicator store="kick" color="blue" />
+      </div>
+
+      <div class="flex gap-px bg-brand-background">
+        <VolumeControl class="hidden md:block" />
+        <BpmControl />
+      </div>
+
+      <div class="controls__control">
+        <StopButton />
+      </div>
     </div>
 
-    <KickControl />
+    <div class="main">
+      <NameSequencer class="main__sequencer" />
 
-    <div class="control">
-      <SequenceIndicator />
-    </div>
-
-    <div />
-
-    <div class="synth__center">
-      <NameSequencer class="row-span-2 md:row-span-1 md:col-span-2" />
-
-      <BioBlock class="md:border-r" />
-
-      <ProjectsBlock />
-    </div>
-
-    <div />
-
-    <div class="control">
-      <SequenceIndicator />
-    </div>
-
-    <div class="flex gap-px">
-      <VolumeControl class="hidden md:block" />
-      <BpmControl />
-    </div>
-
-    <div class="control">
-      <StopButton />
+      <div class="flex-1 grid md:grid-cols-2 w-full">
+        <BioBlock class="md:border-r" />
+        <ProjectsBlock />
+      </div>
     </div>
   </article>
 </template>
@@ -54,7 +62,12 @@ export default {
       }
 
       if (event.code === 'Space') {
+        event.preventDefault()
         toneStore.toggleAudio()
+      }
+
+      if (event.code === 'Escape') {
+        toneStore.stopAudio()
       }
     }
 
@@ -70,11 +83,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.synth {
-  @apply h-screen w-full grid overflow-hidden;
+.controls {
+  @apply fixed inset-0 h-screen w-full grid overflow-hidden z-20 pointer-events-none;
   --sequencer-border-width: theme("spacing.10");
 
-  @screen md {
+  @screen xl {
     --sequencer-border-width: theme("spacing.16");
   }
 
@@ -84,13 +97,29 @@ export default {
     ". . ." var(--sequencer-border-width)
     / var(--sequencer-border-width) auto var(--sequencer-border-width);
 
+  > * {
+    @apply pointer-events-auto;
+  }
+
   &__center {
-    @apply w-full min-h-full border border-brand-outline relative grid md:grid-cols-2 auto-rows-fr overflow-scroll;
     grid-area: center;
+    @apply pointer-events-none border border-brand-outline;
+  }
+
+  &__control {
+    @apply aspect-square w-full ring-1 ring-brand-outline z-10;
   }
 }
 
-.control {
-  @apply aspect-square w-full ring-1 ring-brand-outline;
+.main {
+  @apply w-full h-full min-h-screen relative overflow-scroll p-10 xl:p-16;
+
+  &__sequencer {
+    height: calc(100vh - 140px);
+
+    @screen xl {
+      height: calc(100vh - 206px);
+    }
+  }
 }
 </style>

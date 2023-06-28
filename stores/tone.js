@@ -16,11 +16,15 @@ export const useToneStore = defineStore('tone', {
   state: () => {
     return {
       bpm: 145,
-      isPlaying: false,
+      filter: 70,
+      filterNode: null,
       isInitialised: false,
-      position: { sequence: -1 },
+      isPlaying: false,
+      isStopped: true,
       masterOut: null,
-      volume: -6,
+      position: { sequence: -1 },
+      reverb: { wet: 0.4, decay: 0.8 },
+      volume: -3,
       volumeNode: null,
     }
   },
@@ -48,15 +52,41 @@ export const useToneStore = defineStore('tone', {
       })
 
       this.volumeNode = new Tone.Volume(this.volume).toDestination()
-      toRaw(this.volumeNode).debug = true
+      this.filterNode = new Tone.Filter({ frequency: this.filter, type: 'highpass', rolloff: -96 })
+      this.reverbNode = new Tone.Reverb({ wet: this.reverb.wet, decay: this.reverb.decay, preDelay: 0 })
+      const comp = new Tone.Compressor(-30, 20)
 
-      const reverb = new Tone.Reverb({ wet: 0.3, decay: 0.4, preDelay: 0 })
-      const comp = new Tone.Compressor(-96, 20)
-      const gain = new Tone.Gain(20)
-      this.masterOut = reverb
-        .connect(comp)
-        .connect(gain)
-        .connect(toRaw(this.volumeNode))
+      this.masterOut = comp
+        .chain(toRaw(this.filterNode), toRaw(this.reverbNode), toRaw(this.volumeNode))
+    },
+
+    setFilter (filter) {
+      this.filter = filter
+
+      if (!this.filterNode) {
+        return
+      }
+
+      toRaw(this.filterNode).frequency.value = filter
+    },
+
+    setReverb ({ wet, decay }) {
+      this.reverb = {
+        wet: wet ?? this.reverb.wet,
+        decay: decay ?? this.reverb.decay,
+      }
+
+      if (!this.reverbNode) {
+        return
+      }
+
+      if (wet) {
+        toRaw(this.reverbNode).wet.value = wet
+      }
+
+      if (decay) {
+        toRaw(this.reverbNode).decay = decay
+      }
     },
 
     setVolume (volume) {
@@ -76,6 +106,8 @@ export const useToneStore = defineStore('tone', {
         this.isInitialised = true
       }
 
+      this.isStopped = false
+
       if (Tone.Transport.state !== 'started') {
         Tone.Transport.start('+0.1')
         this.isPlaying = true
@@ -87,7 +119,9 @@ export const useToneStore = defineStore('tone', {
 
     stopAudio () {
       Tone.Transport.stop()
+      this.isStopped = true
       this.isPlaying = false
+      this.position = getPosition()
     },
 
   },

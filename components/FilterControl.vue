@@ -1,14 +1,14 @@
 <template>
   <SliderControl
-    uuid="volume"
-    name="volume"
-    min="-32"
-    max="0"
-    step="0.2"
-    :value="volume"
+    uuid="filter"
+    name="filter"
+    :value="filterValue"
+    max="1000"
+    min="70"
+    step="1"
     @on-input="onInput"
   >
-    <div>Volume</div>
+    <div>Filter</div>
   </SliderControl>
 </template>
 
@@ -18,13 +18,13 @@ import { useToneStore } from '~/stores/tone'
 export default {
   setup () {
     const toneStore = useToneStore()
-    const volume = toRef(toneStore, 'volume')
+    const filterValue = toRef(toneStore, 'filter')
 
     const onInput = (value) => {
-      toneStore.setVolume(value)
+      toneStore.setFilter(value)
     }
 
-    return { onInput, volume }
+    return { filterValue, onInput }
   },
 }
 </script>
