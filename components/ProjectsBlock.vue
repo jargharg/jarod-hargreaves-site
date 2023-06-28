@@ -1,15 +1,13 @@
 <template>
   <ContentBlock heading="Projects">
     <div class="projects__links">
-      <a
+      <CtaButton
         v-for="({ link, label }, index) in links"
         :key="index"
         :href="link"
-        target="_blank"
-        class="projects__link"
       >
         {{ label }}
-      </a>
+      </CtaButton>
     </div>
   </ContentBlock>
 </template>
@@ -35,9 +33,13 @@ export default {
         link: 'https://www.brightersound.com/',
       },
       {
-        label: 'Phil Hargreaves Photography',
-        link: 'https://philhargreaves.photography/',
+        label: 'Autopoetry',
+        link: 'https://autopoetry.jarodhargreav.es/',
       },
+      // {
+      //   label: 'Phil Hargreaves Photography',
+      //   link: 'https://philhargreaves.photography/',
+      // },
     ]
 
     return { links }

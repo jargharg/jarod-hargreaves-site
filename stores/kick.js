@@ -49,7 +49,11 @@ export const useKickStore = defineStore('kick', {
       })
     },
 
-    play (t, isSecondHalf) {
+    play (t) {
+      if (!this.synth) {
+        return
+      }
+
       toRaw(this.synth).triggerAttackRelease('a0', '16n', t)
     },
   },

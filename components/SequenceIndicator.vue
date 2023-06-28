@@ -1,5 +1,5 @@
 <template>
-  <button class="block" @click="onClick">
+  <CtaButton class="sequence__button" no-padding @click="onClick">
     <ul
       class="sequence"
       :class="{
@@ -35,7 +35,7 @@
         </svg>
       </li>
     </ul>
-  </button>
+  </CtaButton>
 </template>
 
 <script>
@@ -80,10 +80,15 @@ export default {
 
 <style lang="scss" scoped>
 .sequence {
-  @apply grid grid-cols-4 h-full w-full gap-1 p-1 transition-colors duration-500;
+  @apply grid grid-cols-4 h-full w-full gap-1 p-1 transition-colors duration-300;
 
   &--active {
     @apply text-brand-background duration-0;
+  }
+
+  &__button {
+    @apply block transition-colors duration-300;
+    @apply active:bg-brand-yellow active:text-brand-background active:duration-0;
   }
 }
 

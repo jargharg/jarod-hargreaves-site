@@ -1,6 +1,7 @@
 <template>
-  <button
-    class="h-full w-full p-2 transport-button outline-none"
+  <CtaButton
+    class="h-full w-full p-0.5 xl:p-2 transport-button outline-none"
+    no-padding
     :class="{ 'bg-brand-red': !isStopped, 'bg-brand-green': isStopped }"
     :aria-label="isStopped ? 'Play' : 'Stop'"
     @click="onClickStop"
@@ -22,7 +23,7 @@
         <path d="M1,1 h8 v8 h-8 Z" vector-effect="non-scaling-stroke" />
       </g>
     </svg>
-  </button>
+  </CtaButton>
 </template>
 
 <script>

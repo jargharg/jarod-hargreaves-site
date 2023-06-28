@@ -66,6 +66,10 @@ export const useSnareStore = defineStore('snare', {
     },
 
     play (t) {
+      if (!this.top || !this.body) {
+        return
+      }
+
       toRaw(this.top).triggerAttackRelease('16n', t)
       toRaw(this.body).triggerAttackRelease('a2', '16n', t)
     },

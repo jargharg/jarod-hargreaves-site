@@ -10,6 +10,8 @@
           <AboutBlock class="md:border-r" />
           <ProjectsBlock />
         </div>
+
+        <ContactBlock />
       </div>
     </div>
   </article>

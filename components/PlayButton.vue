@@ -1,6 +1,7 @@
 <template>
-  <button
-    class="h-full w-full p-2 transport-button"
+  <CtaButton
+    no-padding
+    class="h-full w-full p-0.5 xl:p-2 transport-button"
     :class="{ 'bg-brand-yellow': isPlaying, 'bg-brand-green': !isPlaying }"
     :aria-label="isPlaying ? 'Pause' : 'Play'"
     @click="onClickToggle"
@@ -23,7 +24,7 @@
         />
       </g>
     </svg>
-  </button>
+  </CtaButton>
 </template>
 
 <script>
