@@ -49,6 +49,19 @@ export default {
     onUnmounted(() => {
       removeEventListener('keydown', toggleOnPressSpace)
     })
+
+    const title = 'Jarod Hargreaves | Creative Web Developer'
+    const summary = 'Creative Web Developer based in Manchester, UK'
+
+    const route = useRoute()
+    const config = useRuntimeConfig()
+
+    addSeoToHead({
+      data: { title, summary },
+      overrideFullTitle: true,
+      route,
+      config,
+    })
   },
 }
 </script>

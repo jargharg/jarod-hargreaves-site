@@ -15,7 +15,7 @@ export default defineNuxtConfig({
       lang: 'en',
     },
 
-    title: 'Phil Hargreaves Photography',
+    title: 'Jarod Hargreaves | Creative Web Developer',
 
     meta: [
       {
@@ -48,7 +48,7 @@ export default defineNuxtConfig({
       {
         hid: 'og:site_name',
         name: 'og:site_name',
-        content: 'Phil Hargreaves Photography',
+        content: 'Jarod Hargreaves | Creative Web Developer',
       },
       {
         hid: 'og:locale',

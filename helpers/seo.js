@@ -6,7 +6,7 @@ export function mapSeoMetaOptions (
   overrideFullTitle = false,
   imageCropName = 'meta',
 ) {
-  const siteName = 'Phil Hargreaves Photography'
+  const siteName = 'Jarod Hargreaves | Creative Web Developer'
   const titleString = overrideFullTitle ? title : `${title} | ${siteName}`
 
   const meta = [
