@@ -27,7 +27,7 @@ module.exports = {
     extend: {
       fontFamily: {
         mono: ['mono45-headline', 'monospace'],
-        body: ['scandia-web', 'sans-serif'],
+        body: ['coordinates', 'monospace'],
       },
 
       screens: {
@@ -41,7 +41,7 @@ module.exports = {
         'brand-background': '#242021',
         'brand-green': '#84c873',
         'brand-red': '#d94841',
-        'brand-blue': '#99d3df',
+        'brand-blue': '#8dc3cf',
         'brand-yellow': '#e6eb72',
       },
     },

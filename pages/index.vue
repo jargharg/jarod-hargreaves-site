@@ -6,12 +6,11 @@
       <div class="ring-1 ring-brand-outline">
         <NameSequencer class="main__sequencer" />
 
-        <div class="flex-1 grid md:grid-cols-2 w-full">
-          <AboutBlock class="md:border-r" />
-          <ProjectsBlock />
+        <div class="main__details">
+          <AboutBlock class="main__details__about" />
+          <ProjectsBlock class="main__details__projects" />
+          <ContactBlock class="main__details__contact" />
         </div>
-
-        <ContactBlock />
       </div>
     </div>
   </article>
@@ -77,6 +76,33 @@ export default {
 
     @screen xl {
       height: calc(100vh - 190px);
+    }
+  }
+
+  &__details {
+    @apply grid;
+    grid-template:
+      "about"
+      "contact"
+      "projects";
+
+    @screen md {
+      grid-template:
+        "about projects"
+        "contact contact" /1fr 1fr;
+    }
+
+    &__about {
+      @apply md:border-r;
+      grid-area: about;
+    }
+
+    &__projects {
+      grid-area: projects;
+    }
+
+    &__contact {
+      grid-area: contact;
     }
   }
 }

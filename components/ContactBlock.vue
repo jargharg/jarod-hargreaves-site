@@ -1,6 +1,6 @@
 <template>
   <ContentBlock>
-    <ul class="grid grid-cols-2 gap-px">
+    <ul class="grid grid-cols-2">
       <li
         v-for="({ link, label }, index) in links"
         :key="index"
@@ -9,7 +9,7 @@
         <CtaButton
           :href="link"
           target="_blank"
-          class="block w-full text-brand-background"
+          class="block w-full text-brand-background font-bold"
           :class="{
             'bg-brand-green': index % 2 === 0,
             'bg-brand-blue': index % 2 === 1,
@@ -27,18 +27,15 @@ export default {
   setup () {
     const links = [
       {
-        label: 'LinkedIn',
-        link: 'https://www.linkedin.com/in/jarodhargreaves/',
-      },
-      {
         label: 'Email',
         link: 'mailto:jarod.hargreaves@gmail.com',
+      },
+      {
+        label: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/jarodhargreaves/',
       },
     ]
     return { links }
   },
 }
 </script>
-
-<style>
-</style>

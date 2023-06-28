@@ -3,6 +3,7 @@
     <CtaButton
       v-if="heading"
       class="!py-2 bg-brand-outline bg-opacity-10 !border-b border-brand-outline"
+      :disabled="isDisabled"
       @click="onClickHeading"
     >
       <h2 class="tracking-widest font-mono text-lg xl:text-xl text-center">
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import ScrollTrigger from 'gsap/ScrollTrigger'
 export default {
   props: {
     heading: {
@@ -25,14 +27,35 @@ export default {
     },
   },
 
-  setup () {
+  setup (props) {
     const elBlock = ref(null)
+    const isDisabled = ref(false)
+    let scrollTrigger
 
     const onClickHeading = () => {
       elBlock.value.scrollIntoView({ behavior: 'smooth' })
     }
 
-    return { elBlock, onClickHeading }
+    onMounted(() => {
+      if (!props.heading) {
+        return
+      }
+
+      scrollTrigger = ScrollTrigger.create({
+        trigger: elBlock.value,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        onToggle ({ isActive }) {
+          isDisabled.value = !isActive
+        },
+      })
+    })
+
+    onUnmounted(() => {
+      scrollTrigger?.kill()
+    })
+
+    return { elBlock, isDisabled, onClickHeading }
   },
 }
 </script>

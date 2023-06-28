@@ -70,7 +70,7 @@ export default {
   &::after {
     content: "";
     @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10 mix-blend-color-dodge pointer-events-none;
-    background: radial-gradient(circle, #aaa 20%, transparent 200%);
+    background: radial-gradient(circle, #666 40%, transparent 200%);
   }
 
   &:hover {
@@ -93,7 +93,7 @@ export default {
 
   &__label {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none;
-    @apply bg-brand-background text-brand-text uppercase font-mono tracking-widest text-xs xl:text-sm;
+    @apply bg-brand-background text-brand-text font-mono tracking-widest text-xs xl:text-sm;
     @apply pointer-events-none select-none;
   }
 }

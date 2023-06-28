@@ -169,7 +169,7 @@ export default {
     }
 
     &--active {
-      @apply text-brand-text text-opacity-80;
+      @apply text-brand-blue text-opacity-75;
       @apply bg-brand-blue bg-opacity-50;
       @apply after:opacity-10;
       @apply outline-1 -outline-offset-4;
@@ -177,7 +177,7 @@ export default {
     }
 
     &--key {
-      @apply text-brand-green text-opacity-80;
+      @apply text-brand-green text-opacity-75;
 
       &#{$cell}--active {
         @apply bg-brand-green bg-opacity-50;

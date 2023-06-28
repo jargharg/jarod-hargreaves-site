@@ -4,7 +4,7 @@
       <PlayButton />
     </div>
 
-    <div class="flex gap-px bg-brand-background">
+    <div class="flex bg-brand-background">
       <KickControl class="hidden md:block" />
       <FilterControl />
     </div>
@@ -29,7 +29,7 @@
       <SequenceIndicator store="kick" color="blue" />
     </div>
 
-    <div class="flex gap-px bg-brand-background">
+    <div class="flex bg-brand-background">
       <VolumeControl class="hidden md:block" />
       <BpmControl />
     </div>

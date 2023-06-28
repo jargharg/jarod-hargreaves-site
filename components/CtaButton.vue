@@ -64,13 +64,17 @@ export default {
 
 <style lang="scss" scoped>
 .cta-button {
-  @apply relative flex items-center justify-center font-mono tracking-wider;
+  @apply relative flex items-center justify-center;
+  @apply font-mono tracking-wider;
   @apply border-b last-of-type:border-0 border-brand-outline outline-none;
-  @apply hover:after:opacity-50;
+
+  &:not(:disabled) {
+    @apply hover:after:opacity-50;
+  }
 
   &::after {
     content: "";
-    @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10;
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10 pointer-events-none select-none;
     @apply mix-blend-color-dodge;
     background: radial-gradient(circle, #aaa 40%, transparent 200%);
   }

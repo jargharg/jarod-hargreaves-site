@@ -1,8 +1,14 @@
 <template>
   <div class="sidebar" :class="{ 'sidebar--active': !isInitialised }">
-    <transition name="fade">
-      <slot v-if="!isInitialised" />
-    </transition>
+    <client-only>
+      <transition name="fade">
+        <slot v-if="!isInitialised" />
+      </transition>
+
+      <template #placeholder>
+        <slot />
+      </template>
+    </client-only>
   </div>
 </template>
 
@@ -21,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply flex items-center justify-end py-4 xl:py-5 font-mono tracking-widest text-xs xl:text-sm;
+  @apply flex items-center justify-end py-4 xl:py-5 font-mono tracking-widest text-xs xl:text-sm select-none;
   writing-mode: vertical-rl;
   text-orientation: sideways;
   animation: jiggle 1s infinite alternate linear;
