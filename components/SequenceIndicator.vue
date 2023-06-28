@@ -1,27 +1,37 @@
 <template>
-  <ul
-    class="grid grid-cols-4 h-full w-full gap-1 p-1 transition-colors duration-500"
-    :class="{ [`bg-brand-${color} text-brand-background duration-0`]: pattern[sequenceIndex] }"
-  >
-    <li
-      v-for="(isActive, index) in pattern"
-      :key="index"
-      class="cell"
+  <button class="block" @click="onClick">
+    <ul
+      class="sequence"
       :class="{
-        'cell--playing': index === sequenceIndex,
-        '!opacity-100': !isInitialised,
+        [`sequence--active bg-brand-${color}`]: pattern[sequenceIndex],
       }"
     >
-      <svg viewBox="0 0 10 10" class="h-full w-full stroke-current fill-none">
-        <path
-          v-if="isActive"
-          vector-effect="non-scaling-stroke"
-          d="M0,0 L10,10 M10,0 L0,10"
-        />
-        <circle v-else vector-effect="non-scaling-stroke" cx="5" cy="5" r="2" />
-      </svg>
-    </li>
-  </ul>
+      <li
+        v-for="(isActive, index) in pattern"
+        :key="index"
+        class="cell"
+        :class="{
+          'cell--playing': index === sequenceIndex,
+          '!opacity-100': !isInitialised,
+        }"
+      >
+        <svg viewBox="0 0 10 10" class="h-full w-full stroke-current fill-none">
+          <path
+            v-if="isActive"
+            vector-effect="non-scaling-stroke"
+            d="M0,0 L10,10 M10,0 L0,10"
+          />
+          <circle
+            v-else
+            vector-effect="non-scaling-stroke"
+            cx="5"
+            cy="5"
+            r="2"
+          />
+        </svg>
+      </li>
+    </ul>
+  </button>
 </template>
 
 <script>
@@ -55,14 +65,26 @@ export default {
       return toneStore.position.sequence
     })
 
-    return { sequenceIndex, isInitialised, pattern, sequenceLength }
+    const onClick = async () => {
+      synthStore.play()
+    }
+
+    return { sequenceIndex, isInitialised, onClick, pattern, sequenceLength }
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.sequence {
+  @apply grid grid-cols-4 h-full w-full gap-1 p-1 transition-colors duration-500;
+
+  &--active {
+    @apply text-brand-background duration-0;
+  }
+}
+
 .cell {
-  @apply duration-500 opacity-0 transition-opacity;
+  @apply duration-500 opacity-25 transition-opacity;
 
   &--playing {
     @apply opacity-100 duration-0;

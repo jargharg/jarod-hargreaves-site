@@ -61,7 +61,21 @@ export default {
     theme("colors.brand-outline") 1px,
     transparent 0
   );
-  background-size: 1rem 1rem;
+  background-size: 0.85rem 0.85rem;
+
+  @screen xl {
+    background-size: 1rem 1rem;
+  }
+
+  &::after {
+    content: "";
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10 mix-blend-color-dodge pointer-events-none;
+    background: radial-gradient(circle, #aaa 20%, transparent 200%);
+  }
+
+  &:hover {
+    @apply after:opacity-100;
+  }
 
   &__input {
     @apply appearance-none w-full h-full bg-transparent overflow-hidden outline-none cursor-pointer border-r border-brand-outline;
@@ -79,7 +93,7 @@ export default {
   &__label {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
     @apply bg-brand-background text-brand-text uppercase font-mono tracking-widest text-xs xl:text-sm;
-    @apply pointer-events-none;
+    @apply pointer-events-none select-none;
   }
 }
 </style>

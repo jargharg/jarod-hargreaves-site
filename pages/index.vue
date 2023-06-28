@@ -35,11 +35,13 @@
     </div>
 
     <div class="main">
-      <NameSequencer class="main__sequencer" />
+      <div class="ring-1 ring-brand-outline">
+        <NameSequencer class="main__sequencer" />
 
-      <div class="flex-1 grid md:grid-cols-2 w-full">
-        <BioBlock class="md:border-r" />
-        <ProjectsBlock />
+        <div class="flex-1 grid md:grid-cols-2 w-full">
+          <BioBlock class="md:border-r" />
+          <ProjectsBlock />
+        </div>
       </div>
     </div>
   </article>
@@ -88,7 +90,7 @@ export default {
   --sequencer-border-width: theme("spacing.10");
 
   @screen xl {
-    --sequencer-border-width: theme("spacing.16");
+    --sequencer-border-width: theme("spacing.14");
   }
 
   grid-template:
@@ -98,12 +100,12 @@ export default {
     / var(--sequencer-border-width) auto var(--sequencer-border-width);
 
   > * {
-    @apply pointer-events-auto;
+    @apply pointer-events-auto bg-brand-background;
   }
 
   &__center {
     grid-area: center;
-    @apply pointer-events-none border border-brand-outline;
+    @apply pointer-events-none border border-brand-outline bg-transparent;
   }
 
   &__control {
@@ -112,13 +114,13 @@ export default {
 }
 
 .main {
-  @apply w-full h-full min-h-screen relative overflow-scroll p-10 xl:p-16;
+  @apply w-full h-full min-h-screen relative overflow-scroll p-10 xl:p-14;
 
   &__sequencer {
     height: calc(100vh - 140px);
 
     @screen xl {
-      height: calc(100vh - 206px);
+      height: calc(100vh - 190px);
     }
   }
 }

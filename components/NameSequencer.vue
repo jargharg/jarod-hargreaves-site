@@ -128,11 +128,11 @@ export default {
   @apply flex flex-col items-center justify-center;
 
   &__inner {
-    @apply relative w-full h-full flex flex-col gap-px;
+    @apply relative w-full h-full flex flex-col gap-px bg-brand-outline;
   }
 
   &__row {
-    @apply flex-1 grid gap-px w-full grid-cols-4 md:grid-cols-8;
+    @apply flex-1 grid gap-px w-full bg-brand-background grid-cols-4 md:grid-cols-8;
 
     @screen lg {
       grid-template-columns: repeat(16, 1fr);
