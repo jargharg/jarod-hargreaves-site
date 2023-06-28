@@ -58,7 +58,7 @@ export default {
   @apply relative w-full h-full;
   background-image: radial-gradient(
     circle at 50% 50%,
-    theme("colors.brand-outline") 1px,
+    theme("colors.brand-outline" / 0.5) 1px,
     transparent 0
   );
   background-size: 0.85rem 0.85rem;
@@ -90,6 +90,7 @@ export default {
       box-shadow: 9999px 0 0 9999px theme("colors.brand-background");
     }
   }
+
   &__label {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none;
     @apply bg-brand-background text-brand-text uppercase font-mono tracking-widest text-xs xl:text-sm;

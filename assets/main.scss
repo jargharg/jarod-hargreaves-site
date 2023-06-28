@@ -46,6 +46,18 @@ a {
   .max-w-container {
     max-width: $max-w-container;
   }
+
+  .hide-on-desktop {
+    @media (hover: hover) {
+      @apply hidden;
+    }
+  }
+
+  .hide-on-mobile {
+    @media not (hover: hover) {
+      @apply hidden;
+    }
+  }
 }
 
 .prose {

@@ -2,8 +2,6 @@ import { defineStore } from 'pinia'
 
 import * as Tone from 'tone'
 
-export const sequenceLength = 16
-
 export function getPosition () {
   const [bar, beat, sixteenths] = Tone.Transport.position.split(':')
   const splitSixteenths = +sixteenths.split('.')[0]

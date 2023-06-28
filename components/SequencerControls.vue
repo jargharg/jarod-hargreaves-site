@@ -13,11 +13,17 @@
       <SequenceIndicator store="snare" color="green" />
     </div>
 
-    <div />
+    <SignpostBar class="rotate-180" />
 
     <div class="controls__center" />
 
-    <div />
+    <SideBar>
+      <span>
+        <span class="not-sr-only">((((</span>
+        Sound on
+        <span class="not-sr-only">))))</span>
+      </span>
+    </SideBar>
 
     <div class="controls__control">
       <SequenceIndicator store="kick" color="blue" />

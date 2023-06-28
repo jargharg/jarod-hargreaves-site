@@ -3,7 +3,7 @@
     <ul
       class="sequence"
       :class="{
-        [`sequence--active bg-brand-${color}`]: pattern[sequenceIndex],
+        [`sequence--active bg-brand-${color}`]: isPlaying && pattern[sequenceIndex],
       }"
     >
       <li
@@ -41,7 +41,7 @@
 <script>
 import { useKickStore } from '~/stores/kick'
 import { useSnareStore } from '~/stores/snare'
-import { useToneStore, sequenceLength } from '~/stores/tone'
+import { useToneStore } from '~/stores/tone'
 
 export default {
   props: {
@@ -64,16 +64,23 @@ export default {
 
     const toneStore = useToneStore()
     const isInitialised = toRef(toneStore, 'isInitialised')
+    const isPlaying = toRef(toneStore, 'isPlaying')
 
     const sequenceIndex = computed(() => {
       return toneStore.position.sequence
     })
 
-    const onClick = async () => {
+    const onClick = () => {
       synthStore.play()
     }
 
-    return { sequenceIndex, isInitialised, onClick, pattern, sequenceLength }
+    return {
+      isInitialised,
+      isPlaying,
+      onClick,
+      pattern,
+      sequenceIndex,
+    }
   },
 }
 </script>
