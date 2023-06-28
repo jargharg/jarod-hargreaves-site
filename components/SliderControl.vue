@@ -64,7 +64,7 @@ export default {
   background-size: 0.85rem 0.85rem;
 
   @screen xl {
-    background-size: 1rem 1rem;
+    background-size: 1.2rem 1.2rem;
   }
 
   &::after {
@@ -91,7 +91,7 @@ export default {
     }
   }
   &__label {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none;
     @apply bg-brand-background text-brand-text uppercase font-mono tracking-widest text-xs xl:text-sm;
     @apply pointer-events-none select-none;
   }
