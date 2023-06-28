@@ -1,5 +1,5 @@
 <template>
-  <ContentBlock heading="Bio">
+  <ContentBlock heading="About">
     <div class="p-5">
       (todo)
     </div>

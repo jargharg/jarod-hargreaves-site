@@ -167,6 +167,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      isDevMode: process.env.NODE_ENV === 'development',
       siteUrl: process.env.SITE_URL || 'http://localhost:3000',
       googleAnalyticsMeasurementIdGA4: process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID_GA4 || null,
       googleAnalyticsMeasurementIdUA: process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID_UA || null,

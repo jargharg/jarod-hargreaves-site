@@ -2,6 +2,7 @@
   <button
     class="h-full w-full p-2 transport-button"
     :class="{ 'bg-brand-yellow': isPlaying, 'bg-brand-green': !isPlaying }"
+    :aria-label="isPlaying ? 'Pause' : 'Play'"
     @click="onClickToggle"
   >
     <svg

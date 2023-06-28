@@ -2,6 +2,7 @@
   <button
     class="h-full w-full p-2 transport-button outline-none"
     :class="{ 'bg-brand-red': !isStopped, 'bg-brand-green': isStopped }"
+    :aria-label="isStopped ? 'Play' : 'Stop'"
     @click="onClickStop"
   >
     <svg
