@@ -15,7 +15,11 @@
           '!opacity-100': !isInitialised,
         }"
       >
-        <svg viewBox="0 0 10 10" class="h-full w-full stroke-current fill-none">
+        <svg
+          viewBox="0 0 10 10"
+          class="h-full w-full stroke-current fill-none"
+          role="presentation"
+        >
           <path
             v-if="isActive"
             vector-effect="non-scaling-stroke"

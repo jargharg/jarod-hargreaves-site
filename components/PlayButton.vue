@@ -10,6 +10,7 @@
       stroke="currentColor"
       stroke-width="1px"
       class="h-full w-full overflow-visible fill-brand-background"
+      role="presentation"
     >
       <g v-if="isPlaying">
         <path d="M1,1 h3 v8 h-3 Z" vector-effect="non-scaling-stroke" />

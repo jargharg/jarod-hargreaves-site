@@ -6,6 +6,7 @@
     @click="onClickStop"
   >
     <svg
+      role="presentation"
       viewBox="0 0 10 10"
       stroke="currentColor"
       stroke-width="1px"
