@@ -36,8 +36,8 @@ module.exports = {
       },
 
       colors: {
-        'brand-outline': '#848380',
-        'brand-text': '#e0dfd9',
+        'brand-outline': '#949390',
+        'brand-text': '#f0fff9',
         'brand-background': '#242021',
         'brand-green': '#84c873',
         'brand-red': '#d94841',
