@@ -1,10 +1,10 @@
 <template>
   <SideBar class="signpost" :class="{ 'signpost--active': !isInitialised }">
-    <button @click.once="onClick">
+    <div class="cursor-pointer" @click.once="onClick">
       <span class="hide-on-mobile">Click or press
         <span class="border border-current py-1">space</span></span>
       <span class="hide-on-desktop">Tap</span> to play &rarr;
-    </button>
+    </div>
   </SideBar>
 </template>
 
