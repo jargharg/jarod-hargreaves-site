@@ -7,7 +7,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "slicemachine": "start-slicemachine --port 9999"
+    "slicemachine": "start-slicemachine --port 9999",
+    "deploy:firebase": "yarn build && yarn generate && firebase deploy"
   },
   "engines": {
     "node": ">= 16"
