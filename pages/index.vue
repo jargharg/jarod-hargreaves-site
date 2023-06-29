@@ -1,8 +1,10 @@
 <template>
   <article>
-    <SequencerControls />
+    <div ref="elMask" class="mask" />
 
-    <div class="main">
+    <SequencerControls ref="elControls" />
+
+    <div ref="elMain" class="main">
       <h1 class="sr-only">
         Jarod Hargreaves
       </h1>
@@ -10,7 +12,7 @@
       <div class="ring-1 ring-brand-outline">
         <NameSequencer class="main__sequencer" />
 
-        <div class="main__details">
+        <div ref="elDetails" class="main__details">
           <AboutBlock class="main__details__about" />
           <ProjectsBlock class="main__details__projects" />
           <ContactBlock class="main__details__contact" />
@@ -21,12 +23,18 @@
 </template>
 
 <script>
+import gsap from 'gsap'
 import { useToneStore } from '~/stores/tone'
 import { addSeoToHead } from '~/composables/addSeoToHead'
 
 export default {
   setup () {
     const toneStore = useToneStore()
+
+    const elControls = ref(null)
+    const elDetails = ref(null)
+    const elMain = ref(null)
+    const elMask = ref(null)
 
     const toggleOnPressSpace = (event) => {
       const isTransportButtonFocused = Array.from(
@@ -49,6 +57,27 @@ export default {
 
     onMounted(() => {
       addEventListener('keydown', toggleOnPressSpace)
+      const cells = elMain.value.querySelectorAll('.sequencer__cell')
+      const details = elDetails.value.children
+      const mask = elMask.value
+      const main = elMain.value
+      const controls = elControls.value.$el
+
+      gsap
+        .timeline()
+        .set(mask, { autoAlpha: 0, zIndex: -1 })
+        .from(main, { opacity: 0, duration: 1 })
+        .from(
+          [cells, details],
+          {
+            opacity: 0,
+            duration: 1,
+            stagger: 0.03,
+          },
+          '<+0.2',
+        )
+        .from(controls, { opacity: 0, duration: 1 }, '<+0.2')
+        .set([cells, details, main, controls], { clearProps: true })
     })
 
     onUnmounted(() => {
@@ -67,11 +96,17 @@ export default {
       route,
       config,
     })
+
+    return { elControls, elDetails, elMain, elMask }
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.mask {
+  @apply fixed inset-0 bg-brand-background z-50 pointer-events-none select-none;
+}
+
 .main {
   @apply w-full h-full min-h-screen relative overflow-scroll p-10 xl:p-14;
 
