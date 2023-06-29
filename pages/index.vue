@@ -3,6 +3,10 @@
     <SequencerControls />
 
     <div class="main">
+      <h1 class="sr-only">
+        Jarod Hargreaves
+      </h1>
+
       <div class="ring-1 ring-brand-outline">
         <NameSequencer class="main__sequencer" />
 
