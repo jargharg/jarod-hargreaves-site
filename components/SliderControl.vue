@@ -89,6 +89,10 @@ export default {
       @apply h-20 w-px bg-brand-outline appearance-none mt-0;
       box-shadow: -9999px 0 0 9999px theme("colors.brand-background");
     }
+
+    &:focus-visible {
+      @apply outline outline-brand-text -outline-offset-4 outline-2;
+    }
   }
 
   &__label {

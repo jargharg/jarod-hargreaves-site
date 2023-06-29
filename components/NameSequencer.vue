@@ -149,6 +149,10 @@ export default {
     -webkit-text-stroke: 1px theme("colors.brand-text");
     font-size: max(theme("fontSize.2xl"), 7vw);
 
+    &:focus-visible {
+      @apply outline outline-brand-text -outline-offset-4 outline-2;
+    }
+
     &:hover::after {
       @apply opacity-50;
     }

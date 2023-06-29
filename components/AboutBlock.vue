@@ -47,5 +47,11 @@
   p:not(:last-child) {
     @apply mb-2;
   }
+
+  a {
+    &:focus-visible {
+      @apply outline outline-brand-text outline-offset-4 outline-2;
+    }
+  }
 }
 </style>

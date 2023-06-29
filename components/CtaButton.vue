@@ -72,6 +72,10 @@ export default {
     @apply hover:after:opacity-50;
   }
 
+  &:focus-visible {
+    @apply outline outline-brand-text -outline-offset-4 outline-2;
+  }
+
   &::after {
     content: "";
     @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10 pointer-events-none select-none;
