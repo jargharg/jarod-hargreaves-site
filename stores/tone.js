@@ -99,6 +99,7 @@ export const useToneStore = defineStore('tone', {
 
     async toggleAudio () {
       if (!this.isInitialised) {
+        await Tone.getContext().resume()
         await Tone.start()
         this.setupTone()
         this.isInitialised = true
