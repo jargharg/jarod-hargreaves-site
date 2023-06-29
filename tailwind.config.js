@@ -20,8 +20,7 @@ module.exports = {
       md: '1.5rem', // 24px
       lg: '1.75rem', // 28px
       xl: '2.5rem', // 40px
-      '2xl': '3.75rem', // 60px
-      '3xl': '4.5rem', // 72px
+      '2xl': '3rem', // 48px
     },
 
     extend: {
