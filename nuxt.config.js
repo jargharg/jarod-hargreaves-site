@@ -56,19 +56,14 @@ export default defineNuxtConfig({
         content: 'en_gb',
       },
       {
-        hid: 'og:see_also:pinterest',
-        name: 'og:see_also',
-        content: 'https://www.pinterest.co.uk/------',
-      },
-      {
         hid: 'og:see_also:instagram',
         name: 'og:see_also',
-        content: 'https://www.instagram.com/------',
+        content: 'https://www.instagram.com/jargharg',
       },
       {
         hid: 'og:see_also:linkedin',
         name: 'og:see_also',
-        content: 'https://www.linkedin.com/company/------',
+        content: 'https://www.linkedin.com/in/jarodhargreaves/',
       },
       {
         hid: 'twitter:card',
@@ -76,29 +71,14 @@ export default defineNuxtConfig({
         content: 'summary',
       },
       {
-        hid: 'twitter:site',
-        name: 'twitter:site',
-        content: '@------',
-      },
-      {
-        hid: 'twitter:creator',
-        name: 'twitter:creator',
-        content: '@studiotreble',
-      },
-      {
         hid: 'msapplication-TileColor',
         name: 'msapplication-TileColor',
-        content: '#231f20',
+        content: '##242021',
       },
       {
         hid: 'theme-color',
         name: 'theme-color',
-        content: '#ffffff',
-      },
-      { // TODO: remove this on go live!!!!!!!!!!!!!
-        hid: 'robots',
-        name: 'robots',
-        content: 'noindex',
+        content: '##242021',
       },
     ],
     link: [
