@@ -42,7 +42,7 @@
 
 <style lang="scss" scoped>
 .controls {
-  @apply fixed inset-0 h-screen w-full grid overflow-hidden z-20 pointer-events-none;
+  @apply fixed inset-0 grid overflow-hidden z-20 pointer-events-none;
   --sequencer-border-width: theme("spacing.10");
 
   @screen xl {

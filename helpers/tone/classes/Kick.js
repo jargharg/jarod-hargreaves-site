@@ -25,8 +25,6 @@ export class Kick {
       frequency: 10000,
     })
 
-    console.log(toneStore.masterOut)
-
     this.synth
       .connect(filter, 'highpass')
       .connect(toneStore.masterOut)

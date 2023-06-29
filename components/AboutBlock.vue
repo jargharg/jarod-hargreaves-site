@@ -42,7 +42,7 @@
 
 <style lang="scss" scoped>
 .about {
-  @apply p-5 text-sm tracking-tighter;
+  @apply p-3 lg:p-5 text-sm tracking-tighter;
 
   p:not(:last-child) {
     @apply mb-2;

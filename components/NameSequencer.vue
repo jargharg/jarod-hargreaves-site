@@ -147,8 +147,7 @@ export default {
     @apply transition-colors duration-300;
 
     -webkit-text-stroke: 1px theme("colors.brand-text");
-
-      font-size: max(theme("fontSize.2xl"), 7vw);
+    font-size: max(theme("fontSize.2xl"), 7vw);
 
     &:hover::after {
       @apply opacity-50;
