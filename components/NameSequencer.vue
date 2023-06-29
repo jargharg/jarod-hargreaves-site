@@ -182,7 +182,6 @@ export default {
 
     &--key {
       @apply text-brand-green text-opacity-75;
-
       &#{$cell}--active {
         @apply bg-brand-green bg-opacity-50;
       }
@@ -190,12 +189,10 @@ export default {
 
     &--playing {
       @apply duration-0;
-      @apply after:opacity-10 after:duration-0;
-      @apply before:opacity-10 before:duration-0;
+      @apply after:opacity-100 after:duration-0;
 
       &#{$cell}--active {
         @apply text-brand-background duration-0;
-        @apply after:opacity-100 after:duration-0;
         @apply before:opacity-100 before:duration-0;
       }
     }
