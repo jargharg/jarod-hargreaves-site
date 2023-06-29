@@ -1,5 +1,6 @@
 module.exports = {
   content: [
+    './error.vue',
     './components/**/*.{js,vue,ts}',
     './slices/**/*.{js,vue,ts}',
     './layouts/**/*.vue',
@@ -21,6 +22,7 @@ module.exports = {
       lg: '1.75rem', // 28px
       xl: '2.5rem', // 40px
       '2xl': '3rem', // 48px
+      '3xl': '5rem', // 80px
     },
 
     extend: {

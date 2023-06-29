@@ -8,7 +8,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "slicemachine": "start-slicemachine --port 9999",
-    "deploy:firebase": "yarn build && yarn generate && firebase deploy",
+    "deploy:firebase": "yarn build && firebase deploy",
     "serve": "npx serve ./dist"
   },
   "engines": {
