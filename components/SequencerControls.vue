@@ -42,12 +42,14 @@
 
 <style lang="scss" scoped>
 .controls {
-  @apply fixed inset-0 grid overflow-hidden z-20 pointer-events-none;
+  @apply fixed inset-0 grid z-20 pointer-events-none;
   --sequencer-border-width: theme("spacing.10");
 
   @screen xl {
     --sequencer-border-width: theme("spacing.14");
   }
+
+  box-shadow: 0 100px 0 100px theme("colors.brand-background");
 
   grid-template:
     ". . ." var(--sequencer-border-width)
