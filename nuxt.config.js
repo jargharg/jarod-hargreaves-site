@@ -3,8 +3,18 @@
 const EXCLUDED_SITEMAP_ROUTES = ['/preview/', '/404/', '/slice-simulator/']
 
 export default defineNuxtConfig({
+  hooks: {
+    'nitro:config' (nitroConfig) {
+      if (nitroConfig.dev) { return }
+      nitroConfig.prerender.routes.push('/')
+    },
+  },
+
   nitro: {
     preset: 'cloudflare_pages',
+    prerender: {
+      crawlLinks: false,
+    },
   },
 
   modern: process.env.NODE_ENV !== 'development' ? 'client' : false,
@@ -125,7 +135,7 @@ export default defineNuxtConfig({
   ],
 
   build: {
-    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', '@studiotreble', '@egjs/vue3-flicking'],
+    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', '@studiotreble', 'tone'],
   },
 
   postcss: {
@@ -184,6 +194,8 @@ export default defineNuxtConfig({
     hostname: process.env.SITE_URL,
     trailingSlash: true,
     filter: ({ routes }) => {
+      console.log(routes)
+
       return routes.filter(({ url }) => !EXCLUDED_SITEMAP_ROUTES.find(excludedRoute => url.includes(excludedRoute)))
     },
   },
