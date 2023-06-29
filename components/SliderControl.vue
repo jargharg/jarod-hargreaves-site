@@ -82,12 +82,12 @@ export default {
 
     &::-webkit-slider-thumb {
       @apply h-20 w-px bg-brand-outline appearance-none mt-0;
-      box-shadow: 9999px 0 0 9999px theme("colors.brand-background");
+      box-shadow: -9999px 0 0 9999px theme("colors.brand-background");
     }
 
     &::-moz-range-thumb {
       @apply h-20 w-px bg-brand-outline appearance-none mt-0;
-      box-shadow: 9999px 0 0 9999px theme("colors.brand-background");
+      box-shadow: -9999px 0 0 9999px theme("colors.brand-background");
     }
   }
 
