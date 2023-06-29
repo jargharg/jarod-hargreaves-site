@@ -1,5 +1,5 @@
 <template>
-  <CtaButton class="sequence__button" no-padding @click="onClick">
+  <CtaButton class="sequence__button" no-padding :aria-label="`Play ${store}`" @click="onClick">
     <ul
       class="sequence"
       :class="{
