@@ -142,7 +142,7 @@ export default {
   &__cell {
     $cell: &;
     @apply relative flex flex-col items-center justify-center w-full h-full;
-    @apply font-mono font-bold text-transparent leading-none text-brand-blue text-opacity-75;
+    @apply font-mono font-bold leading-none text-brand-blue text-opacity-75;
     @apply outline-none select-none;
     @apply transition-colors duration-300;
 
