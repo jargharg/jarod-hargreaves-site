@@ -9,7 +9,7 @@
   @apply fixed left-0 top-0 pointer-events-none select-none mix-blend-hard-light z-50 opacity-75;
   @apply motion-reduce:hidden;
   animation: rotate steps(1) infinite 0.35s;
-  background: url("https://i.ibb.co/g7RxJDR/noisy-texture-100x100-o7-000000000000001-d10-c-ffffff-t1.png");
+  background: url("/noise.png");
 
   width: max(100vw, 100vh);
   height: max(100vw, 100vh);
