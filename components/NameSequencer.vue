@@ -32,12 +32,14 @@
 import { useToneStore } from '@/stores/tone'
 import { useKickStore } from '@/stores/kick'
 import { useSnareStore } from '@/stores/snare'
+// import { usePadStore } from '@/stores/pad'
 
 export default {
   setup () {
     const toneStore = useToneStore()
     const kick = useKickStore()
     const snare = useSnareStore()
+    // const pad = usePadStore()
 
     const createCells = (letters) => {
       return letters.map((letter) => {
@@ -98,6 +100,7 @@ export default {
       () => {
         kick.create()
         snare.create()
+        // pad.create()
       },
       { once: true },
     )

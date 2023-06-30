@@ -9,6 +9,7 @@ export const useSnareStore = defineStore('snare', {
     return {
       top: null,
       pattern: mapPatternToBooleans('....x.......x...'),
+      // pattern: mapPatternToBooleans('................'),
       body: null,
       volume: 0,
       volumeNode: null,

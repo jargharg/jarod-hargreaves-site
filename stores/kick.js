@@ -8,6 +8,7 @@ export const useKickStore = defineStore('kick', {
   state: () => {
     return {
       pattern: mapPatternToBooleans('x.x...x.x.x...x.'),
+      // pattern: mapPatternToBooleans('................'),
       body: null,
     }
   },
