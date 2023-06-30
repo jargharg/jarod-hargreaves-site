@@ -43,7 +43,7 @@ export const useToneStore = defineStore('tone', {
     },
 
     setupTone () {
-      Tone.Transport.bpm.value = 145
+      Tone.Transport.bpm.value = this.bpm
 
       this.scheduleRepeat(() => {
         this.position = getPosition()

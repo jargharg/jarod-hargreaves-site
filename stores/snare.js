@@ -27,18 +27,18 @@ export const useSnareStore = defineStore('snare', {
       this.top = new NoiseSynth({
         noise: {
           type: 'pink',
-          playbackRate: 30,
+          playbackRate: 50,
         },
         envelope: {
           attack: 0.001,
           decay: 0.2,
           sustain: 0.15,
-          release: 0.8,
+          release: 0.4,
         },
       })
 
       this.body = new MembraneSynth({
-        volume: -16,
+        volume: -10,
         pitchDecay: 0.04,
         octaves: 2.5,
         oscillator: {
@@ -47,8 +47,8 @@ export const useSnareStore = defineStore('snare', {
         envelope: {
           attack: 0.001,
           decay: 0.4,
-          sustain: 0.2,
-          release: 1,
+          sustain: 0.1,
+          release: 0.2,
           attackCurve: 'exponential',
         },
       })
@@ -71,7 +71,7 @@ export const useSnareStore = defineStore('snare', {
       }
 
       toRaw(this.top).triggerAttackRelease('16n', t)
-      toRaw(this.body).triggerAttackRelease('a2', '16n', t)
+      toRaw(this.body).triggerAttackRelease('b2', '16n', t)
     },
   },
 })

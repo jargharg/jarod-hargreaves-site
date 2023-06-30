@@ -8,7 +8,7 @@ export const useKickStore = defineStore('kick', {
   state: () => {
     return {
       pattern: mapPatternToBooleans('x.x...x.x.x...x.'),
-      synth: null,
+      body: null,
     }
   },
 
@@ -24,7 +24,7 @@ export const useKickStore = defineStore('kick', {
         rolloff: -96,
       })
 
-      this.synth = new Tone.MembraneSynth({
+      this.body = new Tone.MembraneSynth({
         volume: -10,
         pitchDecay: 0.02,
         octaves: 15,
@@ -40,7 +40,21 @@ export const useKickStore = defineStore('kick', {
         },
       })
 
-      toRaw(this.synth).chain(filter, toRaw(toneStore.masterOut))
+      this.top = new Tone.NoiseSynth({
+        volume: -8,
+        noise: {
+          type: 'brown',
+        },
+        envelope: {
+          attack: 0.001,
+          decay: 0.05,
+          sustain: 0.1,
+          release: 0,
+        },
+      })
+
+      toRaw(this.body).chain(filter, toRaw(toneStore.masterOut))
+      toRaw(this.top).chain(filter, toRaw(toneStore.masterOut))
 
       toneStore.scheduleRepeat((t) => {
         if (this.pattern[toneStore.position.sequence]) {
@@ -50,11 +64,12 @@ export const useKickStore = defineStore('kick', {
     },
 
     play (t) {
-      if (!this.synth) {
+      if (!this.body || !this.top) {
         return
       }
 
-      toRaw(this.synth).triggerAttackRelease('a0', '16n', t)
+      toRaw(this.body).triggerAttackRelease('a0', '16n', t)
+      toRaw(this.top).triggerAttackRelease('16n', t)
     },
   },
 })

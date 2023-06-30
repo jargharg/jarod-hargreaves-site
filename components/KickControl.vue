@@ -33,7 +33,7 @@ export default {
         (releaseSettings.max - releaseSettings.min) / (1 - value) +
         releaseSettings.min
 
-      toRaw(kickStore.synth).set({
+      toRaw(kickStore.body).set({
         envelope: {
           decay,
           release,
