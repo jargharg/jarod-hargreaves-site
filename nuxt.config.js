@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     'nitro:config' (nitroConfig) {
       if (nitroConfig.dev) { return }
       nitroConfig.prerender.routes.push('/')
+      nitroConfig.prerender.routes.push('/robots.txt')
     },
   },
 
