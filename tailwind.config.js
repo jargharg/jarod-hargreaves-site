@@ -5,7 +5,6 @@ module.exports = {
     './slices/**/*.{js,vue,ts}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
-    './app/prismic/**/*.vue',
     './plugins/**/*.{js,ts}',
   ],
 
@@ -47,8 +46,4 @@ module.exports = {
       },
     },
   },
-
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
 }

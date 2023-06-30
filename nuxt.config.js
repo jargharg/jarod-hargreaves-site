@@ -127,16 +127,14 @@ export default defineNuxtConfig({
   components: true,
 
   modules: [
-    '@nuxt/image',
     '@nuxtjs/robots',
-    '@nuxtjs/color-mode',
     ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
     ['@pinia/nuxt', { disableVuex: true }],
     '@dargmuesli/nuxt-cookie-control',
   ],
 
   build: {
-    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', '@studiotreble', 'tone'],
+    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', 'tone'],
   },
 
   postcss: {
