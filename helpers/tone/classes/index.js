@@ -1,5 +1,0 @@
-export { Bleep } from './Bleep'
-export { Hat } from './Hat'
-export { Kick } from './Kick'
-export { Bass } from './Bass'
-export { Snare } from './Snare'
