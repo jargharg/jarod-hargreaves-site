@@ -86,12 +86,13 @@ export default {
 
     const title = 'Jarod Hargreaves | Creative Web Developer'
     const summary = 'Creative Web Developer based in Manchester, UK'
+    const primaryImage = { meta: { url: '/meta.png', dimensions: { height: 2400, width: 1254 } } }
 
     const route = useRoute()
     const config = useRuntimeConfig()
 
     addSeoToHead({
-      data: { title, summary },
+      data: { title, summary, primaryImage },
       overrideFullTitle: true,
       route,
       config,
