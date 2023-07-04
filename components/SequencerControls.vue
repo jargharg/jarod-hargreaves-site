@@ -18,11 +18,30 @@
     <div class="controls__center" />
 
     <SideBar>
-      <span>
-        <span class="not-sr-only">((((</span>
-        Sound on
-        <span class="not-sr-only">))))</span>
-      </span>
+      <template #default>
+        <span>
+          <span class="not-sr-only">((((</span>
+          Sound on
+          <span class="not-sr-only">))))</span>
+        </span>
+      </template>
+
+      <template #afterInit>
+        <span class="group">
+          <a
+            target="_blank"
+            href="https://github.com/jargharg/jarod-hargreaves-site"
+          >
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity">
+              See it on
+            </span>
+
+            <span class="group-hover:underline">
+              GitHub
+            </span>
+          </a>
+        </span>
+      </template>
     </SideBar>
 
     <div class="controls__control">

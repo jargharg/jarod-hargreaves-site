@@ -1,8 +1,9 @@
 <template>
   <div class="sidebar" :class="{ 'sidebar--active': !isInitialised }">
     <client-only>
-      <transition name="fade">
+      <transition name="fade" mode="out-in">
         <slot v-if="!isInitialised" />
+        <slot v-else name="afterInit" />
       </transition>
 
       <template #placeholder>
@@ -30,7 +31,6 @@ export default {
   @apply flex items-center justify-end py-4 xl:py-5 font-mono tracking-widest text-xs xl:text-sm select-none;
   writing-mode: vertical-rl;
   text-orientation: sideways;
-  animation: jiggle 1s infinite alternate linear;
 
   &--active {
     animation: jiggle 1s infinite alternate linear;
@@ -51,10 +51,12 @@ export default {
   }
 }
 
+.fade-enter-active,
 .fade-leave-active {
   @apply transition-opacity duration-500;
 }
 
+.fade-enter-from,
 .fade-leave-to {
   @apply opacity-0;
 }
