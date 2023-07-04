@@ -4,7 +4,7 @@
 
     <SequencerControls ref="elControls" />
 
-    <div ref="elMain" class="main">
+    <div ref="elMain" class="main h-full min-h-[100dvh]">
       <h1 class="sr-only">
         Jarod Hargreaves
       </h1>
@@ -86,7 +86,9 @@ export default {
 
     const title = 'Jarod Hargreaves | Creative Web Developer'
     const summary = 'Creative Web Developer based in Manchester, UK'
-    const primaryImage = { meta: { url: '/meta.png', dimensions: { height: 2400, width: 1254 } } }
+    const primaryImage = {
+      meta: { url: '/meta.png', dimensions: { height: 2400, width: 1254 } },
+    }
 
     const route = useRoute()
     const config = useRuntimeConfig()
@@ -109,17 +111,13 @@ export default {
 }
 
 .main {
-  @apply w-full h-full min-h-screen relative overflow-scroll p-10 xl:p-14;
+  @apply w-full relative overflow-scroll p-10 xl:p-14;
 
   &__sequencer {
-    height: calc(100vh - 215px);
-
-    @screen sm {
-      height: calc(100vh - 140px);
-    }
+    height: calc(100dvh - 140px);
 
     @screen xl {
-      height: calc(100vh - 190px);
+      height: calc(100dvh - 190px);
     }
   }
 

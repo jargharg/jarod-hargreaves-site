@@ -10,9 +10,8 @@
   @apply motion-reduce:hidden;
   animation: rotate steps(1) infinite 0.35s;
   background: url("/noise.png");
-
-  width: max(100vw, 100vh);
-  height: max(100vw, 100vh);
+  width: 100vmax;
+  height: 100vmax;
 }
 
 @keyframes rotate {

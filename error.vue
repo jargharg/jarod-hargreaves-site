@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="h-screen bg-brand-background text-brand-text text-base-mobile lg:text-base p-10 xl:p-16"
+      class="h-[100dvh] bg-brand-background text-brand-text text-base-mobile lg:text-base p-10 xl:p-16"
     >
       <div
         class="h-full p-10 border border-brand-outline flex flex-col items-center justify-center font-light font-body tracking-tighter"
