@@ -91,7 +91,7 @@ export default {
     const title = 'Jarod Hargreaves | Creative Web Developer'
     const summary = 'Creative Web Developer based in Manchester, UK'
     const primaryImage = {
-      meta: { url: '/meta.png', dimensions: { height: 2400, width: 1254 } },
+      meta: { url: '/meta.png', dimensions: { height: 1200, width: 627 } },
     }
 
     const route = useRoute()

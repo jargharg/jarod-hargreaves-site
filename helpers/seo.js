@@ -57,11 +57,7 @@ export function mapSeoMetaOptions (
       {
         hid: 'image',
         name: 'image',
-        content: imageField[imageCropName]?.url || '',
-      },
-      {
-        hid: 'og:image',
-        name: 'og:image',
+        property: 'og:image',
         content: imageField[imageCropName]?.url || '',
       },
       {
