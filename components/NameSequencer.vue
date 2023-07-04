@@ -131,7 +131,7 @@ export default {
   @apply flex flex-col items-center justify-center;
 
   &__inner {
-    @apply relative w-full h-full flex flex-col gap-px bg-brand-outline;
+    @apply relative w-full h-full flex flex-col gap-px bg-brand-outline pb-px;
   }
 
   &__row {

@@ -1,5 +1,5 @@
 <template>
-  <div ref="elBlock" class="flex flex-col border-t border-brand-outline">
+  <div ref="elBlock" class="flex flex-col">
     <CtaButton
       v-if="heading"
       class="!py-2 bg-brand-outline bg-opacity-10 !border-b border-brand-outline"

@@ -64,19 +64,23 @@ export default {
       const controls = elControls.value.$el
 
       gsap
-        .timeline()
+        .timeline({ defaults: { ease: 'none' } })
         .set(mask, { autoAlpha: 0, zIndex: -1 })
-        .from(main, { opacity: 0, duration: 1 })
+        .from([main, controls], { opacity: 0, duration: 0.3 })
         .from(
-          [cells, details],
+          [cells],
           {
             opacity: 0,
             duration: 1,
             stagger: 0.03,
           },
-          '<+0.2',
+          '<',
         )
-        .from(controls, { opacity: 0, duration: 1 }, '<+0.2')
+        .from(details, {
+          opacity: 0,
+          duration: 1,
+          stagger: 0.2,
+        }, '-=0.9')
         .set([cells, details, main, controls], { clearProps: true })
     })
 
@@ -107,7 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 .mask {
-  @apply fixed inset-0 bg-brand-background z-50 pointer-events-none select-none;
+  @apply fixed inset-0 bg-brand-background z-40 pointer-events-none select-none;
 }
 
 .main {
@@ -135,7 +139,7 @@ export default {
     }
 
     &__about {
-      @apply md:border-r;
+      @apply md:border-r border-brand-outline;
       grid-area: about;
     }
 
