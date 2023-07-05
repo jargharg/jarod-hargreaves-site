@@ -130,7 +130,6 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
     ['@pinia/nuxt', { disableVuex: true }],
-    '@dargmuesli/nuxt-cookie-control',
   ],
 
   build: {
@@ -161,34 +160,6 @@ export default defineNuxtConfig({
     viewer: false,
   },
 
-  cookies: {
-    necessary: [
-      {
-        name: 'Cookie Control',
-        description: 'Used to save cookie consents.',
-        cookies: ['cookie_control_consent', 'cookie_control_enabled_cookies'],
-      },
-    ],
-    optional: [
-      {
-        name: 'Statistics',
-        identifier: 'ga',
-        description: 'Analytics cookies help us understand how visitors interact with websites by collecting and reporting information anonymously.',
-        initialState: false,
-        src: 'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
-        async: true,
-        cookies: ['_ga', '_gat', '_gid', 'ga-cookie-consent'],
-        accepted: async () => {
-          // window.$nuxt.$ga.enable() // Activate module
-          // window.$nuxt.$ga.page(window.$nuxt.$route.path) // Track current route
-        },
-        declined: async () => {
-          // window.$nuxt.$cookies.remove('ga') // Remove any existing Google Analytics cookies
-        },
-      },
-    ],
-  },
-
   sitemap: {
     hostname: process.env.SITE_URL,
     trailingSlash: true,
@@ -196,37 +167,6 @@ export default defineNuxtConfig({
       console.log(routes)
 
       return routes.filter(({ url }) => !EXCLUDED_SITEMAP_ROUTES.find(excludedRoute => url.includes(excludedRoute)))
-    },
-  },
-
-  cookieControl: {
-    barPosition: 'bottom-full',
-    colors: {
-      barTextColor: '#1D1E1C',
-      modalOverlay: '#000',
-      barBackground: '#fff',
-      barButtonColor: '#fff',
-      modalTextColor: '#1D1E1C',
-      modalBackground: '#fff',
-      modalOverlayOpacity: 0.8,
-      modalButtonColor: '#fff',
-      modalUnsavedColor: '#fff',
-      barButtonHoverColor: '#000000',
-      barButtonBackground: '#1D1E1C',
-      modalButtonHoverColor: '#000000',
-      modalButtonBackground: '#1D1E1C',
-      controlButtonIconColor: '#000',
-      controlButtonBackground: '#fff',
-      barButtonHoverBackground: '#C5DFAB',
-      checkboxActiveBackground: '#C5DFAB',
-      checkboxInactiveBackground: '#1D1E1C',
-      modalButtonHoverBackground: '#C5DFAB',
-      checkboxDisabledBackground: '#F3F3F3',
-      controlButtonIconHoverColor: '#fff',
-      controlButtonHoverBackground: '#000',
-      checkboxActiveCircleBackground: '#000',
-      checkboxInactiveCircleBackground: '#fff',
-      checkboxDisabledCircleBackground: '#fff',
     },
   },
 })
