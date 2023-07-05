@@ -168,7 +168,11 @@ export default {
 
     &::after {
       @apply mix-blend-color-dodge;
-      background: radial-gradient(circle, #aaa 20%, transparent 200%);
+      background: radial-gradient(
+        circle,
+        theme("colors.brand-glow") 20%,
+        transparent 200%
+      );
     }
 
     &::before {
@@ -192,11 +196,11 @@ export default {
 
     &--playing {
       @apply duration-0;
-      @apply after:opacity-100 after:duration-0;
+      @apply after:opacity-50 after:duration-0;
 
       &#{$cell}--active {
         @apply text-brand-background duration-0;
-        @apply before:opacity-100 before:duration-0;
+        @apply before:opacity-50 before:duration-0;
       }
     }
   }

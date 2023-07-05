@@ -43,6 +43,7 @@ module.exports = {
         'brand-red': '#d94841',
         'brand-blue': '#8dc3cf',
         'brand-yellow': '#e6eb72',
+        'brand-glow': '#aaaaaa',
       },
     },
   },

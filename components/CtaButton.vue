@@ -52,9 +52,11 @@ export default {
     })
 
     const classModifiers = computed(() => {
-      return [{
-        'p-4': !props.noPadding,
-      }]
+      return [
+        {
+          'p-4': !props.noPadding,
+        },
+      ]
     })
 
     return { boundAttrs, componentType, classModifiers }
@@ -80,7 +82,11 @@ export default {
     content: "";
     @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10 pointer-events-none select-none;
     @apply mix-blend-color-dodge;
-    background: radial-gradient(circle, #aaa 40%, transparent 200%);
+    background: radial-gradient(
+      circle,
+      theme("colors.brand-glow") 40%,
+      transparent 200%
+    );
   }
 }
 </style>

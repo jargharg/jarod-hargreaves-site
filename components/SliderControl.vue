@@ -70,7 +70,7 @@ export default {
   &::after {
     content: "";
     @apply absolute inset-0 opacity-0 transition-opacity duration-300 z-10 mix-blend-color-dodge pointer-events-none;
-    background: radial-gradient(circle, #666 40%, transparent 200%);
+    background: radial-gradient(circle, theme('colors.brand-glow') 40%, transparent 200%);
   }
 
   &:hover {
