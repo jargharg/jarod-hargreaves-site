@@ -118,10 +118,14 @@ export default {
   @apply w-full relative overflow-scroll p-10 xl:p-14;
 
   &__sequencer {
-    height: calc(100dvh - 139px);
+    height: calc(100dvh - 8.6875rem);
 
     @screen xl {
-      height: calc(100dvh - 189px);
+      height: calc(100dvh - 11.8125rem);
+    }
+
+    @media (max-height: 26.25rem) {
+      height: auto;
     }
   }
 
