@@ -52,6 +52,7 @@ export default {
 
       if (event.code === 'Escape') {
         toneStore.stopAudio()
+        document.activeElement?.blur()
       }
     }
 
