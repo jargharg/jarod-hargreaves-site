@@ -3,13 +3,13 @@
     <div class="about">
       <p>
         Creative web developer based in Manchester, UK. I make responsive,
-        perfomant, accessible, <em>fun</em> websites and apps.
+        performant, accessible, <em>fun</em> websites and apps.
       </p>
 
       <p>
         Big on JavaScript (ESNext, Nuxt, Vue, Angular, React), CSS, semantic and
-        a11y-focussed HTML, web animations (GSAP / CSS / Lottie), and sound
-        design.
+        a11y-focussed HTML, web animations (GSAP / CSS / Lottie), and the odd
+        bit of sound design.
       </p>
 
       <p>
