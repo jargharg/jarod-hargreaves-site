@@ -25,10 +25,10 @@ export default {
         label: 'Purcell',
         link: 'https://www.purcelluk.com/',
       },
-      // {
-      //   label: 'Walk the Plank',
-      //   link: 'https://walktheplank-2023-site.pages.dev/',
-      // },
+      {
+        label: 'Walk the Plank',
+        link: 'https://www.walktheplank.co.uk/',
+      },
       {
         label: 'Brighter Sound',
         link: 'https://www.brightersound.com/',

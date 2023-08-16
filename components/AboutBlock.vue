@@ -2,8 +2,9 @@
   <ContentBlock heading="About">
     <div class="about">
       <p>
-        Creative web developer based in Manchester, UK. I make responsive,
-        performant, accessible, <em>fun</em> websites and apps.
+        Freelance creative web developer based in Manchester, UK. I make
+        inclusive, accessible, responsive, performant, <em>fun</em> websites and
+        apps.
       </p>
 
       <p>
