@@ -33,8 +33,7 @@
       </p>
 
       <p>
-        Currently looking for new work &mdash;
-        <em>could it be with you?</em>
+        <em>Fancy working with me?</em>
         Get in touch &darr;
       </p>
     </div>
