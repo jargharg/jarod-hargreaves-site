@@ -11,7 +11,7 @@
     "serve": "npx serve ./dist"
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 18.10.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
