@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { Filter, StereoWidener, NoiseSynth, MembraneSynth, Volume } from 'tone'
+import * as Tone from 'tone'
 import { useToneStore } from './tone'
 import useCommonSynthActions, { mapPatternToBooleans } from '~/helpers/commonSynthActions'
 
@@ -22,10 +22,10 @@ export const useSnareStore = defineStore('snare', {
     create () {
       const toneStore = useToneStore()
 
-      const filter = new Filter({ frequency: 12000, type: 'lowpass' })
-      const stereoWidener = new StereoWidener(1)
+      const filter = new Tone.Filter({ frequency: 12000, type: 'lowpass' })
+      const stereoWidener = new Tone.StereoWidener(1)
 
-      this.top = new NoiseSynth({
+      this.top = new Tone.NoiseSynth({
         noise: {
           type: 'pink',
           playbackRate: 50,
@@ -38,7 +38,7 @@ export const useSnareStore = defineStore('snare', {
         },
       })
 
-      this.body = new MembraneSynth({
+      this.body = new Tone.MembraneSynth({
         volume: -10,
         pitchDecay: 0.04,
         octaves: 2.5,
@@ -54,7 +54,7 @@ export const useSnareStore = defineStore('snare', {
         },
       })
 
-      this.volumeNode = new Volume(this.volume).connect(toRaw(toneStore.masterOut))
+      this.volumeNode = new Tone.Volume(this.volume).connect(toRaw(toneStore.masterOut))
 
       toRaw(this.top).chain(stereoWidener, toRaw(this.volumeNode))
       toRaw(this.body).chain(filter, toRaw(this.volumeNode))

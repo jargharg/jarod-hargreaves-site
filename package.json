@@ -14,26 +14,26 @@
     "node": ">= 16"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.6",
+    "@babel/eslint-parser": "^7.22.15",
     "@funken-studio/sitemap-nuxt-3": "^4.0.4",
     "@nuxtjs/eslint-config": "^12.0.0",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/stylelint-module": "^5.1.0",
     "@pinia/nuxt": "^0.4.11",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.44.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.50.0",
     "eslint-plugin-nuxt": "^4.0.0",
-    "eslint-plugin-vue": "^9.15.1",
-    "nuxt": "^3.6.1",
-    "postcss": "^8.4.24",
-    "sass": "^1.63.6",
+    "eslint-plugin-vue": "^9.17.0",
+    "nuxt": "^3.7.4",
+    "postcss": "^8.4.31",
+    "sass": "^1.68.0",
     "sass-loader": "^13.3.1",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.3"
   },
   "dependencies": {
     "gsap": "^3.12.2",
-    "pinia": "^2.1.4",
+    "pinia": "^2.1.6",
     "tone": "^14.7.77"
   }
 }

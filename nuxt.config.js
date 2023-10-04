@@ -133,7 +133,7 @@ export default defineNuxtConfig({
   ],
 
   build: {
-    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', 'tone'],
+    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia'],
   },
 
   postcss: {
