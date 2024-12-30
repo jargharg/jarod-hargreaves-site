@@ -2,19 +2,22 @@
   <ContentBlock heading="About">
     <div class="about">
       <p>
-        Freelance creative web developer based in Manchester, UK. I make
-        inclusive, accessible, responsive, performant, <em>fun</em> websites and
-        apps.
+        Creative web developer based in Manchester, UK. I make inclusive, accessible, responsive, performant,
+        <em>fun</em> websites and apps.
       </p>
 
       <p>
-        Big on JavaScript (ESNext, Nuxt, Vue, Angular, React), CSS, semantic and
-        a11y-focussed HTML, web animations (GSAP / CSS / Lottie), and the odd
-        bit of sound design.
+        Big on JavaScript (ESNext, Nuxt, Vue, Angular, React), CSS, semantic and a11y-focussed HTML, web animations
+        (GSAP / CSS / SVG), and the odd bit of sound design.
       </p>
 
       <p>
         Past workplace highlights include
+        <a
+          href="https://persona.studio/"
+          target="_blank"
+          class="underline hover:no-underline underline-offset-2"
+        >Persona Studio</a>,
         <a
           href="https://www.studiotreble.com/"
           target="_blank"
