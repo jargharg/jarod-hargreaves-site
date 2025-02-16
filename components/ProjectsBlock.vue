@@ -18,12 +18,8 @@ export default {
   setup () {
     const links = [
       {
-        label: 'Studio Treble',
-        link: 'https://www.studiotreble.com/',
-      },
-      {
-        label: 'Purcell',
-        link: 'https://www.purcelluk.com/',
+        label: 'Tipo',
+        link: 'https://tipotype.co.uk/',
       },
       {
         label: 'Walk the Plank',
@@ -32,6 +28,10 @@ export default {
       {
         label: 'Brighter Sound',
         link: 'https://www.brightersound.com/',
+      },
+      {
+        label: 'Studio Treble',
+        link: 'https://www.studiotreble.com/',
       },
       {
         label: 'Autopoetry',

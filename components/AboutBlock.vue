@@ -7,8 +7,8 @@
       </p>
 
       <p>
-        Big on JavaScript (ESNext, Nuxt, Vue, Angular, React), CSS, semantic and a11y-focussed HTML, web animations
-        (GSAP / CSS / SVG), and the odd bit of sound design.
+        Handy with JavaScript (ESNext, Nuxt, Vue, Angular, React), CSS, semantic and accessible HTML, web animations
+        (GSAP / CSS / SVG), Shopify, and the odd bit of sound design.
       </p>
 
       <p>
@@ -16,22 +16,22 @@
         <a
           href="https://persona.studio/"
           target="_blank"
-          class="underline hover:no-underline underline-offset-2"
+          class="underline hover:decoration-transparent underline-offset-2 transition-colors"
         >Persona Studio</a>,
         <a
           href="https://www.studiotreble.com/"
           target="_blank"
-          class="underline hover:no-underline underline-offset-2"
+          class="underline hover:decoration-transparent underline-offset-2 transition-colors"
         >Studio Treble</a>,
         <a
           href="https://www.moneysupermarket.com/"
           target="_blank"
-          class="underline hover:no-underline underline-offset-2"
+          class="underline hover:decoration-transparent underline-offset-2 transition-colors"
         >MoneySuperMarket</a>, and
         <a
           href="https://www.itsoneiota.com/"
           target="_blank"
-          class="underline hover:no-underline underline-offset-2"
+          class="underline hover:decoration-transparent underline-offset-2 transition-colors"
         >One iota</a>.
       </p>
 
